@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 
 function AnimatedCounter({
   target,
-  duration = 2000,
+  duration = 1000,
   isVisible,
 }: { target: number; duration?: number; isVisible: boolean }) {
   const [count, setCount] = useState(0)
@@ -58,12 +58,12 @@ export function SocialProofSection() {
     <section className="py-24 md:py-32 border-y border-border relative" ref={sectionRef}>
       <div className="max-w-4xl mx-auto px-6 text-center">
         <p
-          className={`text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6 text-balance transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6 text-balance transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <span className="text-purple-500">Trusted</span> by businesses across industries
         </p>
         <p
-          className={`text-muted-foreground text-lg transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`text-muted-foreground text-lg transition-all duration-500 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           30+ happy clients and growing
         </p>
@@ -76,7 +76,7 @@ export function SocialProofSection() {
           ].map((stat, index) => (
             <div
               key={index}
-              className={`text-center transition-all duration-700 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
+              className={`text-center transition-all duration-500 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
               style={{ transitionDelay: `${200 + index * 150}ms` }}
             >
               <p className="text-4xl md:text-5xl font-semibold text-purple-500 hover:scale-110 transition-transform duration-300">

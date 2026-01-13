@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const words = ["Websites", "Applications", "AI Automations"]
+  const words = ["Website", "AI Automations", "Applications"]
 
   useEffect(() => {
     setMounted(true)
@@ -18,7 +18,7 @@ export function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % words.length)
-    }, 3000) // Change word every 3 seconds
+    }, 2000) // Change word every 2 seconds
 
     return () => clearInterval(interval)
   }, [])
@@ -32,19 +32,19 @@ export function HeroSection() {
 
       <div className="relative z-30 max-w-5xl mx-auto px-4 md:px-6 text-center">
         <p
-          className={`text-sm uppercase tracking-widest text-muted-foreground mb-6 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`text-sm uppercase tracking-widest text-muted-foreground mb-6 transition-all duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           Technology & AI Solutions
         </p>
 
         <h1
-          className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground mb-8 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground mb-8 transition-all duration-500 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           <span className="block">We Build</span>
           <span className="text-purple-500 block relative h-[1.2em] my-2">
             <span
               key={currentWordIndex}
-              className="absolute left-1/2 -translate-x-1/2 animate-[fadeInOut_3s_ease-in-out] whitespace-nowrap"
+              className="absolute left-1/2 -translate-x-1/2 animate-[fadeInOut_2s_ease-in-out] whitespace-nowrap"
             >
               {words[currentWordIndex]}
             </span>
@@ -58,7 +58,7 @@ export function HeroSection() {
         </h1>
 
         <p
-          className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 text-balance transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 text-balance transition-all duration-500 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           FrameYourCode designs and develops <span className="text-purple-400">websites</span>,{" "}
           <span className="text-purple-400">applications</span>, and{" "}
@@ -67,7 +67,7 @@ export function HeroSection() {
         </p>
 
         <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-500 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           <Button
             asChild
@@ -92,7 +92,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <div
-        className={`hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-700 delay-500 ${mounted ? "opacity-100" : "opacity-0"}`}
+        className={`hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-500 delay-300 ${mounted ? "opacity-100" : "opacity-0"}`}
       >
         <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center">
           <div className="w-1.5 h-3 bg-purple-500 rounded-full mt-2 animate-bounce" />

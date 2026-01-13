@@ -37,7 +37,7 @@ export function WhyUsSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div
-            className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
+            className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
           >
             <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Why FrameYourCode</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-8 text-balance">
@@ -51,7 +51,7 @@ export function WhyUsSection() {
           </div>
 
           <div
-            className={`space-y-6 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
+            className={`space-y-6 transition-all duration-500 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
           >
             {reasons.map((reason, index) => (
               <div

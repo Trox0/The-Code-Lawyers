@@ -56,7 +56,7 @@ export function ServicesSection() {
     <section id="services" className="py-24 md:py-32 relative" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div
-          className={`mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mb-16 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">What We Do</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground max-w-3xl text-balance">

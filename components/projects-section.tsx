@@ -47,7 +47,7 @@ export function ProjectsSection() {
     <section id="work" className="py-24 md:py-32 bg-card/50 relative" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div
-          className={`mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mb-16 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Our Work</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-4 text-balance">
@@ -60,7 +60,7 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`group transition-all duration-700 delay-${index * 100} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+              className={`group transition-all duration-500 delay-${index * 100} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-secondary mb-6">
