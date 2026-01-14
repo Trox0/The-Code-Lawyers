@@ -52,7 +52,7 @@ export function FounderSection() {
             </h3>
             <p className="text-muted-foreground mb-6">Founder, FrameYourCode</p>
             <p className="text-foreground leading-relaxed text-balance">
-              FrameYourCode was started with a simple goal — to build <span className="text-purple-400">software</span>{" "}
+              FrameYourCode was started with a simple goal.To build <span className="text-purple-400">software</span>{" "}
               and <span className="text-purple-400">AI systems</span> that actually solve business problems, not just
               look good on paper.
             </p>
