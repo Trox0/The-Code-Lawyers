@@ -91,8 +91,7 @@ export function FounderSection() {
                   alt="Yashwant Pandey - Founder and Principal Architect of The Code Lawyers"
                   fill
                   sizes="192px"
-                  quality={80}
-                  priority={false}
+                  quality={75}
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
                 {/* Overlay gradient */}
