@@ -351,23 +351,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
       <head>
-        {/* Critical CSS - inline above-the-fold styles to reduce render blocking */}
-        <style dangerouslySetInnerHTML={{ __html: `
-          /* Critical above-the-fold styles */
-          :root{--background:oklch(0.09 0 0);--foreground:oklch(0.98 0 0)}
-          *{box-sizing:border-box;margin:0;padding:0}
-          body{background:var(--background);color:var(--foreground);font-family:Inter,system-ui,sans-serif}
-          .min-h-screen{min-height:100vh}
-          .relative{position:relative}
-          .fixed{position:fixed}
-          .z-50{z-index:50}
-          .flex{display:flex}
-          .items-center{align-items:center}
-          .justify-center{justify-content:center}
-          .justify-between{justify-content:space-between}
-          .text-center{text-align:center}
-        `}} />
-
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
