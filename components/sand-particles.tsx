@@ -11,13 +11,20 @@ interface Particle {
   speedX: number
   speedY: number
   opacity: number
+  // New properties for automatic continuous motion
+  driftAngle: number
+  driftSpeed: number
+  driftPhase: number
+  twinkleSpeed: number
+  baseOpacity: number
 }
 
 export function SandParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
-  const mouseRef = useRef({ x: 0, y: 0 })
+  const mouseRef = useRef({ x: -1000, y: -1000 }) // Start offscreen so no initial push
   const animationRef = useRef<number>(undefined)
+  const timeRef = useRef<number>(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -33,21 +40,28 @@ export function SandParticles() {
     }
 
     const initParticles = () => {
-      const particleCount = Math.floor((canvas.width * canvas.height) / 5128) // Increased particle count by additional 30% (from 6667 to 5128)
+      const particleCount = Math.floor((canvas.width * canvas.height) / 3000) // Slightly more particles
       particlesRef.current = []
 
       for (let i = 0; i < particleCount; i++) {
         const x = Math.random() * canvas.width
         const y = Math.random() * canvas.height
+        const baseOpacity = Math.random() * 0.5 + 0.15
         particlesRef.current.push({
           x,
           y,
           baseX: x,
           baseY: y,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3,
-          speedY: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.1,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.2,
+          speedY: (Math.random() - 0.5) * 0.2,
+          opacity: baseOpacity,
+          // Automatic drift properties - each particle has unique motion
+          driftAngle: Math.random() * Math.PI * 2,
+          driftSpeed: Math.random() * 0.008 + 0.003, // Very slow drift
+          driftPhase: Math.random() * Math.PI * 2,
+          twinkleSpeed: Math.random() * 0.02 + 0.01,
+          baseOpacity: baseOpacity,
         })
       }
     }
@@ -64,8 +78,15 @@ export function SandParticles() {
       if (!ctx) return
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      // Increment time for continuous motion
+      timeRef.current += 1
 
       particlesRef.current.forEach((particle) => {
+        // Automatic continuous drift motion (slow orbital/wave motion)
+        const driftX = Math.sin(timeRef.current * particle.driftSpeed + particle.driftPhase) * 0.4
+        const driftY = Math.cos(timeRef.current * particle.driftSpeed * 0.7 + particle.driftPhase) * 0.3
+        
         // Calculate distance from mouse
         const dx = mouseRef.current.x - particle.x
         const dy = mouseRef.current.y - particle.y
@@ -80,13 +101,20 @@ export function SandParticles() {
           particle.y -= Math.sin(angle) * force * 3
         }
 
-        // Gentle floating motion
+        // Apply automatic drift motion
+        particle.x += driftX
+        particle.y += driftY
+
+        // Gentle floating motion with original speed
         particle.x += particle.speedX
         particle.y += particle.speedY
 
-        // Slowly return to base position
-        particle.x += (particle.baseX - particle.x) * 0.01
-        particle.y += (particle.baseY - particle.y) * 0.01
+        // Slowly return to base position (slower return for more floaty effect)
+        particle.x += (particle.baseX - particle.x) * 0.005
+        particle.y += (particle.baseY - particle.y) * 0.005
+
+        // Subtle twinkle effect
+        particle.opacity = particle.baseOpacity + Math.sin(timeRef.current * particle.twinkleSpeed) * 0.15
 
         // Wrap around edges
         if (particle.x < 0) particle.x = canvas.width
@@ -94,10 +122,17 @@ export function SandParticles() {
         if (particle.y < 0) particle.y = canvas.height
         if (particle.y > canvas.height) particle.y = 0
 
-        // Draw particle
+        // Draw particle with subtle glow
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`
+        
+        // Add subtle purple tint to some particles
+        const isPurple = particle.driftPhase > Math.PI * 1.5
+        if (isPurple) {
+          ctx.fillStyle = `rgba(167, 139, 250, ${particle.opacity * 0.8})`
+        } else {
+          ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`
+        }
         ctx.fill()
       })
 

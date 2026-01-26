@@ -8,11 +8,13 @@ import { FounderSection } from "@/components/founder-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { SpaceBackground } from "@/components/space-background"
+import { SandParticles } from "@/components/sand-particles"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background relative">
       <SpaceBackground />
+      <SandParticles />
       <Header />
       <HeroSection />
       <ServicesSection />
@@ -25,3 +27,4 @@ export default function Home() {
     </main>
   )
 }
+

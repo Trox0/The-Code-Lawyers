@@ -1,0 +1,49 @@
+# Robots.txt for The Code Lawyers
+# https://thecodelawyers.com
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Disallow admin and private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Specific crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://thecodelawyers.com/sitemap.xml

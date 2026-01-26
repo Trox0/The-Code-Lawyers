@@ -25,35 +25,108 @@ export function FounderSection() {
   }, [])
 
   return (
-    <section className="py-24 md:py-32 bg-card/50 relative" ref={sectionRef}>
+    <section className="py-24 md:py-32 relative overflow-hidden" ref={sectionRef}>
+      {/* Background gradient */}
+      <div 
+        className="absolute inset-0 -z-10"
+        style={{
+          background: 'linear-gradient(135deg, rgba(147,51,234,0.04) 0%, transparent 50%, rgba(79,70,229,0.04) 100%)',
+        }}
+      />
+
       <div className="max-w-4xl mx-auto px-6">
-        <div
-          className={`flex flex-col md:flex-row items-center gap-12 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        {/* Glassmorphism container */}
+        <div 
+          className={`group relative cursor-pointer rounded-3xl p-8 md:p-12 transition-all duration-700 hover:-translate-y-1 hover:shadow-2xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+          }}
         >
-          <div className="relative w-48 h-48 shrink-0 group">
-            <div className="w-full h-full rounded-full bg-secondary overflow-hidden ring-4 ring-purple-500/20 group-hover:ring-purple-500/40 transition-all duration-500">
-              <Image
-                src="/images/yashwant-pandey.jpeg"
-                alt="Yashwant Pandey"
-                fill
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
+          {/* Gradient glow effect on hover */}
+          <div 
+            className="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"
+            style={{
+              background: 'linear-gradient(135deg, rgba(147,51,234,0.4), rgba(79,70,229,0.3), rgba(147,51,234,0.4))',
+              filter: 'blur(25px)',
+            }}
+          />
+
+          {/* Animated gradient border */}
+          <div 
+            className="absolute inset-0 rounded-3xl opacity-30 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background: 'linear-gradient(135deg, rgba(147,51,234,0.3), transparent, rgba(79,70,229,0.3))',
+              padding: '1px',
+              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMaskComposite: 'xor',
+            }}
+          />
+
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+            {/* Profile image with animated glow */}
+            <div className="relative w-48 h-48 shrink-0 group">
+              {/* Animated glow ring */}
+              <div 
+                className="absolute -inset-3 rounded-full opacity-50 animate-pulse"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(147,51,234,0.4), rgba(79,70,229,0.4))',
+                  filter: 'blur(15px)',
+                }}
               />
+              
+              {/* Profile container */}
+              <div 
+                className="relative w-full h-full rounded-full overflow-hidden transition-all duration-500 group-hover:scale-105"
+                style={{
+                  border: '3px solid rgba(147,51,234,0.4)',
+                  boxShadow: '0 0 30px rgba(147,51,234,0.3), inset 0 0 30px rgba(0,0,0,0.3)',
+                }}
+              >
+                <Image
+                  src="/images/yashwant-pandey.jpeg"
+                  alt="Yashwant Pandey"
+                  fill
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
             </div>
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-full bg-purple-500/0 group-hover:bg-purple-500/10 transition-colors duration-500" />
+
+            {/* Content */}
+            <div
+              className={`text-center md:text-left transition-all duration-500 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
+            >
+              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Meet the Founder</p>
+              <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+                <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">Yashwant Pandey</span>
+              </h3>
+              <p className="text-muted-foreground mb-6">Principal Architect, The Code Lawyers</p>
+              <p className="text-foreground leading-relaxed text-balance">
+                The Code Lawyers was founded to bring <span className="text-purple-400 font-medium">absolute discipline</span> to digital engineering. We build software and AI systems that serve as <span className="text-purple-400 font-medium">strategic assets</span>, prioritizing structural integrity and long-term value above all.
+              </p>
+
+              {/* Decorative elements */}
+              <div className="flex items-center gap-2 mt-6 justify-center md:justify-start">
+                <div className="w-12 h-px bg-gradient-to-r from-purple-500/50 to-transparent" />
+                <div className="w-2 h-2 rounded-full bg-purple-500/50" />
+                <div className="w-8 h-px bg-gradient-to-r from-purple-500/50 to-transparent" />
+              </div>
+            </div>
           </div>
 
-          <div
-            className={`transition-all duration-500 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
-          >
-            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Meet the Founder</p>
-            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
-              <span className="text-purple-500">Yashwant Pandey</span>
-            </h3>
-            <p className="text-muted-foreground mb-6">Principal Architect, The Code Lawyers</p>
-            <p className="text-foreground leading-relaxed text-balance">
-              The Code Lawyers was founded to bring <span className="text-purple-400 font-medium">absolute discipline</span> to digital engineering. We build software and AI systems that serve as <span className="text-purple-400 font-medium">strategic assets</span>, prioritizing structural integrity and long-term value above all.
-            </p>
+          {/* Corner decorations */}
+          <div className="absolute top-6 left-6 opacity-20">
+            <div className="w-6 h-px bg-gradient-to-r from-purple-500 to-transparent" />
+            <div className="w-px h-6 bg-gradient-to-b from-purple-500 to-transparent" />
+          </div>
+          <div className="absolute bottom-6 right-6 opacity-20">
+            <div className="w-6 h-px bg-gradient-to-l from-purple-500 to-transparent ml-auto" />
+            <div className="w-px h-6 bg-gradient-to-t from-purple-500 to-transparent ml-auto" />
           </div>
         </div>
       </div>
