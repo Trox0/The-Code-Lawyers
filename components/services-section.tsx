@@ -168,7 +168,7 @@ export function ServicesSection() {
 
             return (
               <article
-                key={index}
+                key={`service-${index}`} // Updated key to force refresh
                 className={`group cursor-pointer relative ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
                 style={{
                   height: '400px', // Explicit height to prevent collapse
