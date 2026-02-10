@@ -43,8 +43,9 @@ export function HeroSection() {
   }, [])
 
   const scrollProgress = Math.min(scrollY / maxScroll, 1)
-  // Rocket travels from top (0) to bottom of entire page
-  const rocketY = scrollProgress * (maxScroll + (typeof window !== "undefined" ? window.innerHeight - 100 : 600))
+  // Rocket travels from top of viewport to bottom of viewport as user scrolls entire page
+  // This keeps it visible the whole time instead of shooting off screen
+  const rocketY = scrollProgress * (typeof window !== "undefined" ? window.innerHeight - 100 : 600)
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (window.innerWidth >= 768) return // Desktop only - keep non-interactive
