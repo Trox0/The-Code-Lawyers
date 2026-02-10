@@ -87,11 +87,13 @@ export function HeroSection() {
       {/* Rocket - Moved here for better z-index control */}
       <div
         ref={rocketRef}
-        className={`fixed right-4 md:right-8 md:pointer-events-none origin-center transition-all duration-500 ease-out ${isDragging ? 'scale-90 md:scale-110' : 'scale-75 md:scale-100'
+        className={`fixed right-4 md:right-8 md:pointer-events-none origin-center ${isDragging ? 'scale-90 md:scale-110' : 'scale-75 md:scale-100'
           }`}
         style={{
           zIndex: 50,
           transform: `translateY(${rocketY}px) rotate(180deg)`,
+          transition: 'scale 0.3s ease-out',
+          willChange: 'transform',
         }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
