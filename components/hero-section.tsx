@@ -18,15 +18,24 @@ export function HeroSection() {
 
   const words = ["Website", "AI Automations", "Applications"]
 
+
   useEffect(() => {
     setMounted(true)
+    let ticking = false
+
     const handleScroll = () => {
-      setScrollY(window.scrollY)
-      setMaxScroll(document.documentElement.scrollHeight - window.innerHeight)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY)
+          setMaxScroll(document.documentElement.scrollHeight - window.innerHeight)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     handleScroll()
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     window.addEventListener("resize", handleScroll)
     return () => {
       window.removeEventListener("scroll", handleScroll)
