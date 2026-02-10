@@ -43,7 +43,8 @@ export function HeroSection() {
   }, [])
 
   const scrollProgress = Math.min(scrollY / maxScroll, 1)
-  const rocketY = 20 + (scrollProgress * (typeof window !== "undefined" ? window.innerHeight - 120 : 600))
+  // Rocket travels from top (0) to bottom of entire page
+  const rocketY = scrollProgress * (maxScroll + (typeof window !== "undefined" ? window.innerHeight - 100 : 600))
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (window.innerWidth >= 768) return // Desktop only - keep non-interactive
@@ -85,7 +86,7 @@ export function HeroSection() {
       {/* Rocket - Moved here for better z-index control */}
       <div
         ref={rocketRef}
-        className={`fixed right-4 md:right-8 md:pointer-events-none origin-center transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] ${isDragging ? 'scale-90 md:scale-110' : 'scale-75 md:scale-100'
+        className={`fixed right-4 md:right-8 md:pointer-events-none origin-center transition-all duration-500 ease-out ${isDragging ? 'scale-90 md:scale-110' : 'scale-75 md:scale-100'
           }`}
         style={{
           zIndex: 50,
