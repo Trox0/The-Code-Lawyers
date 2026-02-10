@@ -4,13 +4,13 @@ import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter"
 })
 
-const geistMono = Geist_Mono({ 
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-geist-mono"
@@ -56,6 +56,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  userScalable: true,
 }
 
 export const metadata: Metadata = {
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.author, url: siteConfig.url }],
   creator: siteConfig.author,
   publisher: siteConfig.name,
-  
+
   // Robots & Indexing
   robots: {
     index: true,
@@ -84,7 +85,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  
+
   // Canonical URL
   metadataBase: new URL(siteConfig.url),
   alternates: {
@@ -93,7 +94,7 @@ export const metadata: Metadata = {
       "en-US": "/en-US",
     },
   },
-  
+
   // Open Graph - Facebook, LinkedIn, etc.
   openGraph: {
     type: "website",
@@ -119,7 +120,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
+
   // Twitter Card
   twitter: {
     card: "summary_large_image",
@@ -129,7 +130,7 @@ export const metadata: Metadata = {
     creator: siteConfig.twitterHandle,
     images: [siteConfig.ogImage],
   },
-  
+
   // Icons
   icons: {
     icon: [
@@ -145,10 +146,10 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.ico",
   },
-  
+
   // Manifest for PWA
   manifest: "/manifest.json",
-  
+
   // Additional metadata
   category: "technology",
   classification: "Business",
@@ -158,14 +159,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  
+
   // Verification (add your actual verification codes)
   verification: {
     google: "your-google-verification-code",
     yandex: "your-yandex-verification-code",
     // bing: "your-bing-verification-code",
   },
-  
+
   // App links
   appleWebApp: {
     capable: true,
@@ -355,20 +356,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        
+
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* Preload critical resources */}
-        <link 
-          rel="preload" 
-          href="/images/yashwant-pandey.jpeg" 
-          as="image" 
+        <link
+          rel="preload"
+          href="/images/yashwant-pandey.jpeg"
+          as="image"
           type="image/jpeg"
         />
       </head>

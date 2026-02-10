@@ -8,12 +8,14 @@ import { FounderSection } from "@/components/founder-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { LazyBackgrounds } from "@/components/lazy-backgrounds"
+import { AnimatedRocket } from "@/components/animated-rocket"
 
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background relative">
       <LazyBackgrounds />
+      <AnimatedRocket />
       <Header />
       <HeroSection />
       <ServicesSection />
