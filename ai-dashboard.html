@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0f172a;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .dashboard {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        /* Central Analytics Panel */
+        .analytics-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 350px;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 32px;
+            overflow: hidden;
+        }
+
+        /* Graph Container */
+        .graph-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .line-graph {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(139, 92, 246, 0.3) 0%, 
+                rgba(34, 211, 238, 0.8) 100%);
+            transform-origin: left center;
+            animation: glowLine 3s ease-in-out infinite;
+        }
+
+        .line-graph::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: 
+                radial-gradient(ellipse at left center, 
+                    rgba(139, 92, 246, 0.2) 0%, 
+                    transparent 70%),
+                radial-gradient(ellipse at right center, 
+                    rgba(34, 211, 238, 0.3) 0%, 
+                    transparent 70%);
+            filter: blur(10px);
+        }
+
+        /* Data Nodes */
+        .data-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, 
+                rgba(139, 92, 246, 1) 0%, 
+                rgba(139, 92, 246, 0.6) 50%, 
+                transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+            animation: pulseNode 2s ease-in-out infinite;
+        }
+
+        .node-1 { top: 30%; left: 15%; animation-delay: 0s; }
+        .node-2 { top: 25%; left: 35%; animation-delay: 0.5s; }
+        .node-3 { top: 20%; left: 55%; animation-delay: 1s; }
+        .node-4 { top: 15%; left: 75%; animation-delay: 1.5s; }
+
+        /* Connection Lines */
+        .connection-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                rgba(139, 92, 246, 0.6) 0%, 
+                rgba(34, 211, 238, 0.6) 100%);
+            transform-origin: left center;
+            animation: glowConnection 3s ease-in-out infinite;
+        }
+
+        .line-1 {
+            width: 100px;
+            top: 30%;
+            left: 20%;
+            transform: rotate(-5deg);
+        }
+
+        .line-2 {
+            width: 120px;
+            top: 25%;
+            left: 40%;
+            transform: rotate(-3deg);
+        }
+
+        .line-3 {
+            width: 110px;
+            top: 20%;
+            left: 60%;
+            transform: rotate(-2deg);
+        }
+
+        /* Metrics Cards */
+        .metrics-card {
+            position: absolute;
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            padding: 20px;
+            min-width: 120px;
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-1 {
+            top: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .metric-2 {
+            top: 15%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        .metric-3 {
+            bottom: 25%;
+            left: 8%;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .metric-4 {
+            bottom: 20%;
+            right: 8%;
+            animation: float 6s ease-in-out infinite 3s;
+        }
+
+        /* Metric Indicators */
+        .metric-indicator {
+            width: 60px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 2px;
+            margin: 8px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-indicator::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+            border-radius: 2px;
+            animation: progressPulse 3s ease-in-out infinite;
+        }
+
+        .metric-circle {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .metric-circle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: conic-gradient(from 0deg, #8b5cf6 0deg, #22d3ee 270deg, transparent 270deg);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 4s linear infinite;
+        }
+
+        /* Glowing Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: floatOrb 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, transparent 70%);
+            bottom: -75px;
+            right: -75px;
+            animation-delay: 2s;
+        }
+
+        /* Side Panels */
+        .side-panel {
+            position: absolute;
+            background: rgba(30, 41, 59, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .left-panel {
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 200px;
+        }
+
+        .right-panel {
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 200px;
+        }
+
+        .panel-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(139, 92, 246, 0.6);
+            border-radius: 50%;
+            margin: 15px auto;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        .panel-dot:nth-child(2) { animation-delay: 0.3s; }
+        .panel-dot:nth-child(3) { animation-delay: 0.6s; }
+        .panel-dot:nth-child(4) { animation-delay: 0.9s; }
+
+        /* Animations */
+        @keyframes glowLine {
+            0%, 100% { opacity: 0.6; box-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
+            50% { opacity: 1; box-shadow: 0 0 20px rgba(34, 211, 238, 0.8); }
+        }
+
+        @keyframes pulseNode {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes glowConnection {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -10px) scale(1.1); }
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .analytics-panel {
+                width: 90%;
+                height: 300px;
+            }
+            
+            .metrics-card {
+                min-width: 80px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Grid Pattern Background -->
+        <div class="grid-pattern"></div>
+
+        <!-- Glowing Orbs -->
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+
+        <!-- Central Analytics Panel -->
+        <div class="analytics-panel">
+            <div class="graph-container">
+                <!-- Trend Line -->
+                <div class="line-graph"></div>
+                
+                <!-- Data Nodes -->
+                <div class="data-node node-1"></div>
+                <div class="data-node node-2"></div>
+                <div class="data-node node-3"></div>
+                <div class="data-node node-4"></div>
+                
+                <!-- Connection Lines -->
+                <div class="connection-line line-1"></div>
+                <div class="connection-line line-2"></div>
+                <div class="connection-line line-3"></div>
+            </div>
+        </div>
+
+        <!-- Metrics Cards -->
+        <div class="metrics-card metric-1">
+            <div class="metric-indicator"></div>
+            <div class="metric-circle"></div>
+        </div>
+
+        <div class="metrics-card metric-2">
+            <div class="metric-indicator"></div>
+            <div class="metric-circle"></div>
+        </div>
+
+        <div class="metrics-card metric-3">
+            <div class="metric-indicator"></div>
+            <div class="metric-circle"></div>
+        </div>
+
+        <div class="metrics-card metric-4">
+            <div class="metric-indicator"></div>
+            <div class="metric-circle"></div>
+        </div>
+
+        <!-- Side Panels -->
+        <div class="side-panel left-panel">
+            <div class="panel-dot"></div>
+            <div class="panel-dot"></div>
+            <div class="panel-dot"></div>
+            <div class="panel-dot"></div>
+        </div>
+
+        <div class="side-panel right-panel">
+            <div class="panel-dot"></div>
+            <div class="panel-dot"></div>
+            <div class="panel-dot"></div>
+            <div class="panel-dot"></div>
+        </div>
+    </div>
+</body>
+</html>

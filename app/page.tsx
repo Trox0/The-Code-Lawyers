@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { LazyBackgrounds } from "@/components/lazy-backgrounds"
 
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background relative">
@@ -22,7 +23,7 @@ export default function Home() {
       <FounderSection />
       <ContactSection />
       <Footer />
+
     </main>
   )
 }
-
