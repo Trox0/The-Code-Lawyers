@@ -88,6 +88,10 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Cross-browser text rendering consistency */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* Premium selection styling */
