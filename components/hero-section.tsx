@@ -9,8 +9,6 @@ import { ServiceMockups } from "./service-mockups"
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [scrollY, setScrollY] = useState(0)
-  const [maxScroll, setMaxScroll] = useState(1)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStartY, setDragStartY] = useState(0)
   const [isMainTextHovered, setIsMainTextHovered] = useState(false)
@@ -21,25 +19,34 @@ export function HeroSection() {
 
   useEffect(() => {
     setMounted(true)
-    let ticking = false
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY)
-          setMaxScroll(document.documentElement.scrollHeight - window.innerHeight)
-          ticking = false
-        })
-        ticking = true
-      }
+    // God mode: Direct DOM manipulation for butter-smooth performance
+    const updateRocketPosition = () => {
+      if (!rocketRef.current) return
+
+      const scrollY = window.scrollY
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const scrollProgress = Math.min(scrollY / maxScroll, 1)
+      const rocketY = scrollProgress * (window.innerHeight - 100)
+
+      // Direct transform update - bypasses React, instant 60fps
+      rocketRef.current.style.transform = `translateY(${rocketY}px) rotate(180deg)`
     }
 
-    handleScroll()
+    let rafId: number
+    const handleScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(updateRocketPosition)
+    }
+
+    updateRocketPosition()
     window.addEventListener("scroll", handleScroll, { passive: true })
-    window.addEventListener("resize", handleScroll)
+    window.addEventListener("resize", updateRocketPosition)
+
     return () => {
+      if (rafId) cancelAnimationFrame(rafId)
       window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("resize", handleScroll)
+      window.removeEventListener("resize", updateRocketPosition)
     }
   }, [])
 
@@ -51,10 +58,6 @@ export function HeroSection() {
     return () => clearInterval(interval)
   }, [])
 
-  const scrollProgress = Math.min(scrollY / maxScroll, 1)
-  // Rocket travels from top of viewport to bottom of viewport as user scrolls entire page
-  // This keeps it visible the whole time instead of shooting off screen
-  const rocketY = scrollProgress * (typeof window !== "undefined" ? window.innerHeight - 100 : 600)
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (window.innerWidth >= 768) return // Desktop only - keep non-interactive
@@ -100,7 +103,6 @@ export function HeroSection() {
           }`}
         style={{
           zIndex: 50,
-          transform: `translateY(${rocketY}px) rotate(180deg)`,
           transition: 'scale 0.3s ease-out',
           willChange: 'transform',
         }}
