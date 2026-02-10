@@ -71,8 +71,8 @@ export function AnimatedRocket() {
             className={`fixed right-4 md:right-8 z-[100] origin-center md:pointer-events-none ${isDragging ? 'scale-90' : 'scale-75 md:scale-100'
                 }`}
             style={{
-                top: 0,
-                transition: 'scale 0.2s ease-out',
+                top: '80px', // Start below header
+                transition: 'transform 0.1s linear, scale 0.2s ease-out',
                 willChange: 'transform',
             }}
             onTouchStart={handleTouchStart}

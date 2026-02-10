@@ -3,7 +3,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  
+
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -12,7 +12,7 @@ const nextConfig = {
     qualities: [75],
     minimumCacheTTL: 60 * 60 * 24 * 365,
   },
-  
+
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -20,7 +20,7 @@ const nextConfig = {
 
   // Experimental optimizations - tree shake more packages
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false,
     optimizePackageImports: [
       'lucide-react',
       '@emailjs/browser',
