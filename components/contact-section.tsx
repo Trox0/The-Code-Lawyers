@@ -11,9 +11,9 @@ import { Phone, ArrowRight, Mail, Send, Loader2, CheckCircle, XCircle } from "lu
 import { toast } from "sonner"
 
 // EmailJS configuration - Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID" // e.g., "service_xxxxxxx"
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID" // e.g., "template_xxxxxxx"
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY" // e.g., "xxxxxxxxxxx"
+const EMAILJS_SERVICE_ID = "service_7mtevzo"
+const EMAILJS_TEMPLATE_ID = "template_buyrg5o"
+const EMAILJS_PUBLIC_KEY = "sSf039MhYq_hCloBC"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -99,16 +99,15 @@ export function ContactSection() {
           >
             <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Contact</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-6 text-balance">
-              Let&apos;s build something that <span className="text-purple-500">works</span>.
+              Start your <span className="text-purple-500">project</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Ready to <span className="text-purple-400">automate</span> your business with{" "}
-              <span className="text-purple-400">AI</span>? Get in touch for a free consultation.
+              Tell us what you need. We&apos;ll show you how we can help.
             </p>
 
             {/* Contact info cards with glassmorphism */}
             <div className="space-y-4 mb-8">
-              <div 
+              <div
                 className="flex items-center gap-4 p-4 rounded-xl group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
@@ -125,7 +124,7 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="flex items-center gap-4 p-4 rounded-xl group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
@@ -138,7 +137,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground font-medium">contact@thecodelawyers.com</p>
+                  <p className="text-foreground font-medium">yashwant@thecodelawyers.com</p>
                 </div>
               </div>
             </div>
@@ -160,15 +159,15 @@ export function ContactSection() {
             className={`relative transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
           >
             {/* Glow effect behind card */}
-            <div 
+            <div
               className="absolute -inset-4 rounded-2xl opacity-30 blur-3xl"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(147,51,234,0.3), transparent 70%)',
               }}
             />
-            
+
             {/* Main glassmorphism card */}
-            <div 
+            <div
               className="relative rounded-2xl p-8 transition-all duration-500"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
@@ -179,7 +178,7 @@ export function ContactSection() {
               }}
             >
               {/* Animated gradient border */}
-              <div 
+              <div
                 className="absolute inset-0 rounded-2xl opacity-50"
                 style={{
                   background: 'linear-gradient(135deg, rgba(147,51,234,0.2), transparent, rgba(79,70,229,0.2))',
@@ -234,13 +233,12 @@ export function ContactSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full relative overflow-hidden transition-all duration-300 ${
-                    submitStatus === "success" 
-                      ? "bg-green-600 hover:bg-green-600" 
+                  className={`w-full relative overflow-hidden transition-all duration-300 ${submitStatus === "success"
+                      ? "bg-green-600 hover:bg-green-600"
                       : submitStatus === "error"
-                      ? "bg-red-600 hover:bg-red-600"
-                      : "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600"
-                  } hover:scale-[1.02] shadow-lg shadow-purple-500/20`}
+                        ? "bg-red-600 hover:bg-red-600"
+                        : "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600"
+                    } hover:scale-[1.02] shadow-lg shadow-purple-500/20`}
                 >
                   {isSubmitting ? (
                     <>

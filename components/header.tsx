@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
+
 import { Menu, X } from "lucide-react"
 import SocialLinks from "./SocialLinks"
 
@@ -17,26 +18,34 @@ export function Header() {
   ]
 
   return (
-    <header 
+    <header
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
       itemScope
       itemType="https://schema.org/WPHeader"
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
-        <nav 
+        <nav
           className="flex items-center justify-between"
           aria-label="Main navigation"
           role="navigation"
         >
           {/* Logo/Brand - Important for SEO */}
-          <Link 
-            href="/" 
-            className="text-xl font-semibold tracking-tight text-foreground hover:text-purple-400 transition-colors"
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 text-xl font-semibold tracking-tight text-foreground hover:text-purple-400 transition-colors"
             aria-label="The Code Lawyers - Home"
             itemProp="url"
           >
-            <span 
+            <Image
+              src="/logo.png"
+              alt="The Code Lawyers Logo"
+              width={64}
+              height={64}
+              className="rounded-md"
+              priority
+            />
+            <span
               itemProp="name"
               className="relative"
             >
@@ -65,18 +74,7 @@ export function Header() {
               <SocialLinks />
             </div>
 
-            <Button 
-              asChild 
-              size="sm"
-              className="bg-purple-600 hover:bg-purple-700 hover:scale-105 transition-all duration-300"
-            >
-              <Link 
-                href="#contact"
-                aria-label="Book a free consultation with The Code Lawyers"
-              >
-                Book a Consultation
-              </Link>
-            </Button>
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,7 +91,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav 
+          <nav
             id="mobile-navigation"
             className="md:hidden py-4 border-t border-border mt-4"
             aria-label="Mobile navigation"
@@ -115,19 +113,7 @@ export function Header() {
                 <SocialLinks />
               </div>
 
-              <Button 
-                asChild 
-                size="sm" 
-                className="w-fit bg-purple-600 hover:bg-purple-700"
-              >
-                <Link 
-                  href="#contact" 
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-label="Book a free consultation"
-                >
-                  Book a Consultation
-                </Link>
-              </Button>
+
             </div>
           </nav>
         )}

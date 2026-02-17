@@ -4,11 +4,11 @@ import { CheckCircle, Sparkles } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 const reasons = [
-  { text: "Absolute Code Correctness", gradient: "from-blue-500 to-purple-500" },
-  { text: "Model Explainability", gradient: "from-purple-500 to-pink-500" },
-  { text: "Safety Guardrails", gradient: "from-cyan-500 to-blue-500" },
-  { text: "Responsible AI Deployment", gradient: "from-violet-500 to-purple-500" },
-  { text: "Scalable Defensive Architecture", gradient: "from-indigo-500 to-cyan-500" },
+  { text: "Clean, Bug-Free Code", gradient: "from-blue-500 to-purple-500" },
+  { text: "AI You Can Understand & Trust", gradient: "from-purple-500 to-pink-500" },
+  { text: "Built-In Security", gradient: "from-cyan-500 to-blue-500" },
+  { text: "Ethical AI Practices", gradient: "from-violet-500 to-purple-500" },
+  { text: "Systems That Grow With You", gradient: "from-indigo-500 to-cyan-500" },
 ]
 
 export function WhyUsSection() {
@@ -44,11 +44,11 @@ export function WhyUsSection() {
               <p className="text-sm uppercase tracking-widest text-muted-foreground">The Code Lawyers Advantage</p>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-8 text-balance">
-              Built for <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">performance</span>. Engineered for{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">scale</span>.
+              Why businesses <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">choose</span>{" "}
+              <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">us</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              We deliver systems where quality is non-negotiable. In an era of rapid deployment, we provide the strategic discipline required for stable, defensible digital infrastructure.
+              We build software that works reliably, handles growth, and gives you a competitive edge — without cutting corners.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export function WhyUsSection() {
                 style={{ transitionDelay: `${300 + index * 100}ms` }}
               >
                 {/* Glassmorphism card */}
-                <div 
+                <div
                   className="relative flex items-center gap-4 p-4 rounded-xl transition-all duration-300 hover:translate-x-2 hover:shadow-lg"
                   style={{
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
@@ -71,7 +71,7 @@ export function WhyUsSection() {
                   }}
                 >
                   {/* Glow effect on hover */}
-                  <div 
+                  <div
                     className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${reason.gradient}`}
                     style={{ filter: 'blur(15px)' }}
                   />

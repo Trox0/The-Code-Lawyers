@@ -6,6 +6,54 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
 import { ServiceMockups } from "./service-mockups"
 
+// Continuous looping typewriter with purple word-by-word highlight
+function TypewriterText({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
+  const [currentWordIndex, setCurrentWordIndex] = useState(-1)
+  const [started, setStarted] = useState(false)
+
+  // Split text into words while preserving spaces
+  const words = text.split(' ')
+
+  useEffect(() => {
+    const startTimer = setTimeout(() => {
+      setStarted(true)
+    }, delay)
+
+    return () => clearTimeout(startTimer)
+  }, [delay])
+
+  useEffect(() => {
+    if (!started) return
+
+    const timer = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % words.length) // Loop continuously
+    }, 600) // 600ms per word for readable pace
+
+    return () => clearInterval(timer)
+  }, [started, words.length])
+
+  return (
+    <span className={className}>
+      {words.map((word, index) => (
+        <span key={index}>
+          <span
+            className={`transition-all duration-500 ease-in-out ${index === currentWordIndex
+              ? 'text-purple-400 font-bold inline-block scale-110'
+              : 'text-foreground inline-block scale-100'
+              }`}
+            style={{
+              display: 'inline-block',
+            }}
+          >
+            {word}
+          </span>
+          {index < words.length - 1 && ' '}
+        </span>
+      ))}
+    </span>
+  )
+}
+
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
@@ -57,14 +105,14 @@ export function HeroSection() {
           className={`text-sm uppercase tracking-widest text-muted-foreground mb-6 transition-all duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           itemProp="alternativeHeadline"
         >
-          Digital Excellence
+          Software & AI That Delivers Results
         </p>
 
         <h1
           className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground mb-8 transition-all duration-500 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           itemProp="headline"
         >
-          <span className="block">We Architect</span>
+          <span className="block">We Build</span>
           <span className="text-purple-500 block relative h-[1.2em] my-2" aria-live="polite" aria-atomic="true">
             <span
               key={currentWordIndex}
@@ -78,33 +126,36 @@ export function HeroSection() {
         </h1>
 
         <p
-          className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 text-balance transition-all duration-500 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`text-lg md:text-xl max-w-3xl mx-auto mb-8 text-balance transition-all duration-500 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           itemProp="description"
         >
-          Specializing in <span className="text-purple-400 font-medium">High-Performance Websites</span>, <span className="text-purple-400 font-medium">Custom Applications</span>, and <span className="text-purple-400 font-medium">Strategic AI Solutions</span>.
+          <TypewriterText
+            text="Websites that convert. Modern tech. AI that doubles your workforce."
+            delay={800}
+          />
         </p>
 
         <nav
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-500 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`flex items-center justify-center transition-all duration-500 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           aria-label="Primary call to action"
         >
           <Button
-            asChild
             size="lg"
             className="group bg-purple-600 hover:bg-purple-700 hover:scale-105 transition-all duration-300"
+            onClick={(e) => {
+              e.preventDefault()
+              const contactSection = document.getElementById('contact')
+              if (contactSection) {
+                contactSection.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }
+            }}
+            aria-label="Get your project reviewed by The Code Lawyers"
           >
-            <Link href="#contact" aria-label="Book a free consultation with The Code Lawyers">
-              Book a Free Consultation
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="hover:scale-105 hover:border-purple-500/50 transition-all duration-300 bg-transparent"
-          >
-            <Link href="#work" aria-label="View The Code Lawyers portfolio and projects">View Our Work</Link>
+            Get Your Project Reviewed
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Button>
         </nav>
       </div>

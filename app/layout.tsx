@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 // Site configuration
 const siteConfig = {
   name: "The Code Lawyers",
-  description: "The Code Lawyers - Premier software engineering and AI solutions company. We deliver disciplined software development, AI chatbots, voice bots, automation, and custom applications with absolute code correctness and responsible AI deployment.",
+  description: "The Code Lawyers - Software engineering and AI solutions company. We build websites, applications, AI chatbots, voice bots, and automation systems that deliver real results for growing businesses.",
   url: "https://thecodelawyers.com",
   ogImage: "https://thecodelawyers.com/og-image.jpg",
   keywords: [
@@ -206,12 +206,12 @@ const jsonLd = {
         "@type": "ContactPoint",
         telephone: "+91-8454055228",
         contactType: "customer service",
-        email: "contact@thecodelawyers.com",
+        email: "yashwant@thecodelawyers.com",
         availableLanguage: ["English", "Hindi"],
       },
       sameAs: [
         "https://twitter.com/thecodelawyers",
-        "https://linkedin.com/company/thecodelawyers",
+        "https://www.linkedin.com/company/111461921/",
         "https://github.com/thecodelawyers",
         "https://instagram.com/thecodelawyers",
       ],

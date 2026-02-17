@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 function AnimatedCounter({
   target,
@@ -78,12 +80,12 @@ export function SocialProofSection() {
         <p
           className={`text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6 text-balance transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="text-purple-500">Trusted</span> by businesses across industries
+          <span className="text-purple-500">Results</span> our clients count on
         </p>
         <p
           className={`text-muted-foreground text-lg transition-all duration-500 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          30+ happy clients and growing
+          Delivering real outcomes for 30+ businesses and counting
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-8 md:gap-12 flex-wrap">
@@ -130,6 +132,45 @@ export function SocialProofSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Content - merged from Final CTA */}
+        <div
+          className={`mt-20 text-center transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <p className="text-sm uppercase tracking-widest text-purple-400 mb-4">
+            READY TO TRANSFORM YOUR BUSINESS?
+          </p>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            Request{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+              a Call.
+            </span>
+          </h2>
+
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Let's discuss how we can build the perfect solution for your business.
+          </p>
+
+          <Button
+            size="lg"
+            className="group bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 hover:scale-105 transition-all duration-300 text-lg px-8 py-6 shadow-lg shadow-purple-500/25"
+            onClick={(e) => {
+              e.preventDefault()
+              const contactSection = document.getElementById('contact')
+              if (contactSection) {
+                contactSection.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }
+            }}
+            aria-label="Request a call from The Code Lawyers"
+          >
+            Request a Call
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Button>
         </div>
       </div>
     </section>

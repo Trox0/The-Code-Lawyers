@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <rect width="400" height="600" fill="#000000"/>
+  <!-- Detailed side profile silhouette facing right -->
+  <g fill="#ffffff">
+    <!-- Back of head -->
+    <ellipse cx="170" cy="200" rx="90" ry="110" />
+    
+    <!-- Forehead -->
+    <path d="M 200 120 Q 260 130 270 180 L 270 200 Q 268 190 260 185 Q 250 140 200 130 Z"/>
+    
+    <!-- Nose -->
+    <path d="M 270 200 Q 290 210 295 230 Q 298 240 295 250 Q 290 255 285 253 Q 280 250 278 245 L 270 235 Z"/>
+    
+    <!-- Upper lip -->
+    <path d="M 285 253 Q 280 258 275 260 L 270 260 Q 268 258 270 255 Z"/>
+    
+    <!-- Lower lip and chin -->
+    <path d="M 270 260 Q 268 265 268 270 Q 268 280 265 290 Q 260 300 250 305 Q 240 308 230 305 L 220 300 Q 215 295 215 290 L 270 260 Z"/>
+    
+    <!-- Neck -->
+    <path d="M 220 300 Q 210 310 205 330 L 200 370 Q 198 390 195 410 L 190 450 Q 188 480 185 510 L 180 560 L 180 600 L 220 600 L 220 560 Q 222 510 225 480 L 230 450 Q 232 410 235 390 L 240 370 Q 242 350 245 330 L 250 305 Q 240 308 230 305 Z"/>
+    
+    <!-- Fill in head interior -->
+    <ellipse cx="190" cy="210" rx="70" ry="90" />
+  </g>
+</svg>

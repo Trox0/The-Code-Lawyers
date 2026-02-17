@@ -14,7 +14,7 @@ export default function SocialLinks() {
       </Link>
 
       <Link
-        href="mailto:yashwant.a.pandey@gmail.com"
+        href="mailto:yashwant@thecodelawyers.com"
         aria-label="Email"
         className="hover:text-blue-500 transition-colors"
       >
@@ -22,7 +22,7 @@ export default function SocialLinks() {
       </Link>
 
       <Link
-        href="https://www.linkedin.com/in/yashwant-pandey-96382720a/"
+        href="https://www.linkedin.com/company/111461921/"
         target="_blank"
         aria-label="LinkedIn"
         className="hover:text-blue-600 transition-colors"
@@ -31,7 +31,7 @@ export default function SocialLinks() {
       </Link>
 
       <Link
-        href="https://www.instagram.com/yashwant_zozo/"
+        href="https://www.instagram.com/thecodelawyers/"
         target="_blank"
         aria-label="Instagram"
         className="hover:text-pink-500 transition-colors"

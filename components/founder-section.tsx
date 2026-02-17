@@ -31,7 +31,7 @@ export function FounderSection() {
       image: "/images/yashwant-pandey.jpeg",
       bio: (
         <>
-          Engineering <span className="text-purple-400 font-medium">strategic assets</span>, not just software. We bring discipline to digital chaos to drive <span className="text-purple-400 font-medium">measurable business impact</span>.
+          We focus on building software that <span className="text-purple-400 font-medium">solves real business problems</span> — not just checking boxes. Every project gets the attention it deserves to deliver <span className="text-purple-400 font-medium">measurable results</span>.
         </>
       )
     },
@@ -41,7 +41,7 @@ export function FounderSection() {
       image: "/images/kshitij.jpg",
       bio: (
         <>
-          Architecting <span className="text-purple-400 font-medium">scalable, future-proof systems</span> that leverage cutting-edge AI to secure your <span className="text-purple-400 font-medium">technological advantage</span>.
+          We design systems <span className="text-purple-400 font-medium">built to last</span> — reliable today and ready for whatever comes next. Our AI solutions are <span className="text-purple-400 font-medium">practical, not experimental</span>.
         </>
       )
     }

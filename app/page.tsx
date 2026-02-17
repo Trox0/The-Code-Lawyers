@@ -8,6 +8,7 @@ const SocialProofSection = dynamic(() => import("@/components/social-proof-secti
 const WhyUsSection = dynamic(() => import("@/components/why-us-section").then(mod => mod.WhyUsSection))
 const FounderSection = dynamic(() => import("@/components/founder-section").then(mod => mod.FounderSection))
 const ContactSection = dynamic(() => import("@/components/contact-section").then(mod => mod.ContactSection))
+
 const Footer = dynamic(() => import("@/components/footer").then(mod => mod.Footer))
 import { LazyBackgrounds } from "@/components/lazy-backgrounds"
 import { AnimatedRocket } from "@/components/animated-rocket"
@@ -26,6 +27,7 @@ export default function Home() {
       <WhyUsSection />
       <FounderSection />
       <ContactSection />
+
       <Footer />
 
     </main>
