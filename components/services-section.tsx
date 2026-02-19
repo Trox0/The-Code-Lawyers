@@ -5,6 +5,91 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { servicesData } from "@/lib/services-data"
 
+function highlightText(text: string) {
+  const keywords = [
+    "SOC2-compliant codebase", "Web3", "Next.js", "TypeScript", "REST", "GraphQL", "PostgreSQL", 
+    "MongoDB", "Docker", "AWS", "API", "APIs", "RAG", "vector", "LLM",
+    "SOC2-compliant", "GPT", "LangChain", "Pinecone", "WebSocket",
+    "SEO architecture", "codebase", "scalable architecture", 
+    "Average 35%", "Average 40%", "20+ hours", "your docs", "your CRM",
+    "2-3", "FTEs", "CRM", "calendar", "qualified leads", "Syncs",
+    "Workflow orchestration", "Event-driven", "Real-time data sync", "Full audit logging", "50+"
+  ]
+  
+  let result = text
+  keywords.forEach(kw => {
+    const regex = new RegExp(`(${kw})`, 'gi')
+    result = result.replace(regex, '|||$1|||')
+  })
+  
+  const parts = result.split('|||')
+  
+  return parts.map((part, i) => {
+    const clean = part.trim()
+    if (keywords.some(k => k.toLowerCase() === clean.toLowerCase())) {
+      return <span key={i} className="text-purple-400 font-semibold">{part}</span>
+    }
+    return part
+  })
+}
+
+function AnimatedBullets({ bullets, highlighted }: { bullets: string[]; highlighted?: boolean }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isInView, setIsInView] = useState(false)
+  const bulletRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+        }
+      },
+      { threshold: 0.3 },
+    )
+
+    if (bulletRef.current) {
+      observer.observe(bulletRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isInView || bullets.length === 0) return
+
+    let idx = 0
+    const cycle = () => {
+      setActiveIndex(idx)
+      idx = (idx + 1) % bullets.length
+    }
+
+    cycle()
+    const interval = setInterval(cycle, 1000)
+
+    return () => clearInterval(interval)
+  }, [isInView, bullets.length])
+
+  const activeColor = highlighted ? "bg-amber-400" : "bg-purple-400"
+  const textActiveColor = highlighted ? "text-amber-300" : "text-purple-300"
+
+  return (
+    <div ref={bulletRef} className="min-h-[72px]">
+      {bullets.map((bullet, idx) => (
+        <div
+          key={idx}
+          className="flex items-center gap-2"
+        >
+          <div className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all duration-200 ${activeIndex === idx ? activeColor + " scale-125" : "bg-muted-foreground/30"}`} />
+          <span className={`text-xs transition-all duration-200 ${activeIndex === idx ? textActiveColor + " translate-x-1 font-medium" : "text-muted-foreground"}`}>
+            {bullet}
+          </span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export function ServicesSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -71,8 +156,12 @@ export function ServicesSection() {
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+                    border: service.highlighted 
+                      ? '1px solid rgba(245,158,11,0.3)' 
+                      : '1px solid rgba(255,255,255,0.08)',
+                    boxShadow: service.highlighted
+                      ? '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(245,158,11,0.1)'
+                      : '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
                   }}
                 >
                   {/* Gradient glow on hover */}
@@ -85,7 +174,9 @@ export function ServicesSection() {
                   <div
                     className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(147,51,234,0.3) 0%, rgba(79,70,229,0.3) 50%, rgba(147,51,234,0.3) 100%)',
+                      background: service.highlighted
+                        ? 'linear-gradient(135deg, rgba(245,158,11,0.3) 0%, rgba(217,119,6,0.3) 50%, rgba(245,158,11,0.3) 100%)'
+                        : 'linear-gradient(135deg, rgba(147,51,234,0.3) 0%, rgba(79,70,229,0.3) 50%, rgba(147,51,234,0.3) 100%)',
                       padding: '1px',
                       WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                       WebkitMaskComposite: 'xor',
@@ -98,24 +189,24 @@ export function ServicesSection() {
                     <div className="absolute inset-0 rounded-xl bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
                   </div>
 
+                  {/* Advanced Badge */}
+                  {service.highlighted && (
+                    <div className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-amber-500/20 text-amber-400 border border-amber-500/30 mb-3">
+                      Advanced
+                    </div>
+                  )}
+
                   {/* Title & Description */}
                   <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-purple-300 transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
-                    {service.description}
+                    {highlightText(service.description)}
                   </p>
 
-                  {/* Process steps (compact) */}
+                  {/* Animated bullets */}
                   <div className="space-y-2 mb-6">
-                    {service.steps.map((step, stepIdx) => (
-                      <div key={stepIdx} className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-full bg-purple-500/10 flex items-center justify-center text-[10px] font-bold text-purple-400 border border-purple-500/20 shrink-0">
-                          {stepIdx + 1}
-                        </div>
-                        <span className="text-xs text-muted-foreground">{step.title}</span>
-                      </div>
-                    ))}
+                    <AnimatedBullets bullets={service.bullets} highlighted={service.highlighted} />
                   </div>
 
                   {/* Learn More link */}

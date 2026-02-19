@@ -40,8 +40,8 @@ export function Header() {
             <Image
               src="/logo.png"
               alt="The Code Lawyers Logo"
-              width={64}
-              height={64}
+              width={56}
+              height={56}
               className="rounded-md"
               priority
             />

@@ -1,4 +1,4 @@
-import { Bot, Phone, Workflow, Globe, Code, Video } from "lucide-react"
+import { Bot, Phone, Workflow, Globe, Code, Brain } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 export interface ServiceStep {
@@ -12,20 +12,23 @@ export interface ServiceData {
     title: string
     tagline: string
     description: string
+    bullets: string[]
     gradient: string
     steps: ServiceStep[]
     techStack: string[]
     deliverables: string[]
+    highlighted?: boolean
 }
 
 export const servicesData: ServiceData[] = [
     {
         slug: "websites",
         icon: Globe,
-        title: "Websites & Applications",
-        tagline: "Websites that convert visitors into customers",
+        title: "Websites & Web Apps",
+        tagline: "Production-grade sites built for performance.",
         description:
-            "We build fast, responsive websites and web applications designed around your business goals. Every page is optimized for speed, search rankings, and conversions — not just aesthetics.",
+            "Every project ships with SEO architecture, mobile-first design, SOC2-compliant codebase, and a maintainable stack your team can own.",
+        bullets: ["Mobile-first responsive", "Next.js + TypeScript + Web3", "SEO architecture baked in", "Conversion-optimized"],
         gradient: "from-blue-500/20 to-purple-500/20",
         steps: [
             {
@@ -36,7 +39,7 @@ export const servicesData: ServiceData[] = [
             {
                 title: "Design",
                 description:
-                    "Wireframes and high-fidelity mockups — you approve every screen before a single line of code is written.",
+                    "Wireframes and high-fidelity mockups. You approve every screen before a single line of code is written.",
             },
             {
                 title: "Development",
@@ -69,10 +72,11 @@ export const servicesData: ServiceData[] = [
     {
         slug: "custom-software",
         icon: Code,
-        title: "Custom Software Development",
-        tagline: "Backend systems built for your specific workflow",
+        title: "Custom Software Engineering",
+        tagline: "Backend systems architected for your workflow.",
         description:
-            "Off-the-shelf tools don't fit every business. We build custom software that matches exactly how your team works — from CRMs and dashboards to internal tools and APIs.",
+            "We build APIs, internal tools, and backend systems from scratch. Database-first design. Scalable architecture. Zero technical debt.",
+        bullets: ["Custom REST/GraphQL APIs", "PostgreSQL/MongoDB design", "Docker + AWS deployment", "Zero technical debt"],
         gradient: "from-purple-500/20 to-pink-500/20",
         steps: [
             {
@@ -119,10 +123,11 @@ export const servicesData: ServiceData[] = [
     {
         slug: "ai-chatbots",
         icon: Bot,
-        title: "AI Website Chatbots",
-        tagline: "Your best salesperson works 24/7 and never takes a break",
+        title: "AI Chatbots & Assistants",
+        tagline: "24/7 frontline that qualifies leads and books meetings.",
         description:
-            "We build AI chatbots that answer customer questions, qualify leads, and book meetings — while you sleep. Trained on your business data, so they sound like your team.",
+            "Handles pricing queries, product questions, and booking. Average 35% lift in qualified leads. Saves 20+ hours/week on repetitive queries. Trained on your docs. Integrated with your CRM.",
+        bullets: ["24/7 instant responses", "Qualifies & books automatically", "~35% more qualified leads", "Saves 20+ hours weekly"],
         gradient: "from-cyan-500/20 to-blue-500/20",
         steps: [
             {
@@ -165,10 +170,11 @@ export const servicesData: ServiceData[] = [
     {
         slug: "ai-voice-bots",
         icon: Phone,
-        title: "AI Voice Bots",
-        tagline: "Handle calls, book appointments, and follow up automatically",
+        title: "AI Voice & Calling",
+        tagline: "Inbound/outbound calls handled autonomously.",
         description:
-            "AI voice bots that handle inbound and outbound calls with natural-sounding conversations. Perfect for appointment scheduling, lead follow-ups, and customer support at scale.",
+            "Natural voice agents book meetings, qualify leads, and follow up. Average 40% increase in booked calls. Replaces 2-3 full-time receptionists. Syncs with CRM and calendar in real-time.",
+        bullets: ["Natural voice conversations", "~40% more bookings", "Replaces 2-3 FTEs", "CRM + calendar sync"],
         gradient: "from-violet-500/20 to-purple-500/20",
         steps: [
             {
@@ -209,18 +215,19 @@ export const servicesData: ServiceData[] = [
         ],
     },
     {
-        slug: "ai-outreach",
+        slug: "ai-automation",
         icon: Workflow,
-        title: "AI Outreach & Automation",
-        tagline: "Find leads, engage them, and follow up — without lifting a finger",
+        title: "AI Automation & Workflows",
+        tagline: "Repetitive work eliminated. Ops on autopilot.",
         description:
-            "Automated outreach workflows that find your ideal customers, send personalized messages across email and social, and follow up until they respond. You close the deals; we fill the pipeline.",
+            "Workflow orchestration across 50+ tools. Event-driven triggers. Real-time data sync. Full audit logging.",
+        bullets: ["Automated social posting", "Scraping & data sorting", "Customized outreach sequences", "Full audit logging"],
         gradient: "from-indigo-500/20 to-cyan-500/20",
         steps: [
             {
                 title: "Ideal Customer Profile",
                 description:
-                    "Define who your best customers are — industry, role, company size, and buying signals.",
+                    "Define who your best customers are: industry, role, company size, and buying signals.",
             },
             {
                 title: "Sequence Design",
@@ -255,49 +262,53 @@ export const servicesData: ServiceData[] = [
         ],
     },
     {
-        slug: "ai-video",
-        icon: Video,
-        title: "AI Video & Content Editing",
-        tagline: "Short-form content that gets attention and drives growth",
+        slug: "custom-llm",
+        icon: Brain,
+        title: "Custom LLM Integration",
+        tagline: "Enterprise-grade AI embedded in your stack.",
         description:
-            "We produce high-impact short-form videos and social media content using AI tools and professional editing. Optimized for TikTok, Instagram Reels, and YouTube Shorts.",
-        gradient: "from-pink-500/20 to-violet-500/20",
+            "We embed fine-tuned LLMs directly into your systems. RAG pipelines, vector search, retrieval evaluation. SOC2-compliant. Cost controls included.",
+        bullets: ["Fine-tuned on your data", "RAG + vector DB", "Enterprise security", "Cost controls built-in"],
+        gradient: "from-amber-500/20 to-orange-500/20",
         steps: [
             {
-                title: "Content Strategy",
+                title: "Requirements & Scope",
                 description:
-                    "Research trending formats in your niche. Plan a content calendar that aligns with your goals.",
+                    "Define use cases, data sources, and success metrics for your LLM integration.",
             },
             {
-                title: "Production",
+                title: "Data Preparation",
                 description:
-                    "AI-assisted video generation or professional editing of your raw footage. Fast turnaround.",
+                    "Clean, structure, and embed your proprietary data for retrieval.",
             },
             {
-                title: "Post-Production",
+                title: "Pipeline Development",
                 description:
-                    "Captions, effects, sound design, and color grading. Every detail matters for engagement.",
+                    "Build RAG pipelines, fine-tuning workflows, and evaluation frameworks.",
             },
             {
-                title: "Distribution",
+                title: "Deployment & Monitoring",
                 description:
-                    "Format and optimize for each platform. Scheduling, hashtag strategy, and performance tracking.",
+                    "Deploy to production with monitoring, cost controls, and continuous evaluation.",
             },
         ],
         techStack: [
-            "Adobe Premiere Pro",
-            "After Effects",
-            "CapCut",
-            "Runway ML",
-            "ElevenLabs",
-            "Canva",
+            "OpenAI",
+            "Anthropic",
+            "LangChain",
+            "LangGraph",
+            "Pinecone",
+            "Chroma",
+            "Python",
+            "FastAPI",
         ],
         deliverables: [
-            "Edited short-form videos (batch of 10-30/month)",
-            "Platform-optimized exports (TikTok, Reels, Shorts)",
-            "Thumbnail designs",
-            "Content calendar",
-            "Monthly engagement analytics",
+            "Custom LLM integration in your existing systems",
+            "RAG pipeline with your knowledge base",
+            "Evaluation framework and monitoring dashboard",
+            "Cost optimization and rate limiting",
+            "Documentation and team training",
         ],
+        highlighted: true,
     },
 ]
