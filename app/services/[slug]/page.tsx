@@ -1,9 +1,55 @@
-import { servicesData } from "@/lib/services-data"
+import { servicesData, MindMapNode } from "@/lib/services-data"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { LazyBackgrounds } from "@/components/lazy-backgrounds"
+import { AnimatedRocket } from "@/components/animated-rocket"
+
+function MindMapTree({ node, isLast = true, prefix = "" }: { node: MindMapNode; isLast?: boolean; prefix?: string }) {
+    const hasChildren = node.children && node.children.length > 0
+    const connector = isLast ? "└── " : "├── "
+    const childPrefix = isLast ? "    " : "│   "
+
+    return (
+        <>
+            <li className="font-mono text-sm">
+                <span className="text-purple-400/50">{prefix}{connector}</span>
+                {hasChildren ? (
+                    <span className="text-foreground font-semibold">{node.label}</span>
+                ) : (
+                    <span className="text-muted-foreground">{node.label}</span>
+                )}
+            </li>
+            {hasChildren && node.children!.map((child, idx) => (
+                <MindMapTree 
+                    key={idx} 
+                    node={child} 
+                    isLast={idx === node.children!.length - 1}
+                    prefix={prefix + childPrefix}
+                />
+            ))}
+        </>
+    )
+}
+
+function MindMapView({ root }: { root: MindMapNode }) {
+    return (
+        <ul className="space-y-0">
+            <li className="font-mono text-sm">
+                <span className="text-foreground font-semibold">{root.label}</span>
+            </li>
+            {root.children?.map((child, idx) => (
+                <MindMapTree 
+                    key={idx} 
+                    node={child} 
+                    isLast={idx === root.children!.length - 1}
+                />
+            ))}
+        </ul>
+    )
+}
 
 // Generate static paths for all services
 export function generateStaticParams() {
@@ -49,6 +95,8 @@ export default async function ServicePage({
 
     return (
         <main className="min-h-screen bg-background">
+            <LazyBackgrounds />
+            <AnimatedRocket />
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -101,6 +149,46 @@ export default async function ServicePage({
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         {service.description}
                     </p>
+                </div>
+            </section>
+
+            {/* What It Is */}
+            <section className="py-16 md:py-20">
+                <div className="max-w-2xl mx-auto px-6 text-center">
+                    <p className="text-lg text-foreground leading-relaxed">
+                        {service.whatItIs}
+                    </p>
+                </div>
+            </section>
+
+            {/* Who It's For */}
+            <section className="py-16 md:py-20">
+                <div className="max-w-3xl mx-auto px-6">
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground mb-8 text-center">
+                        Who It&apos;s For
+                    </p>
+                    <div className="space-y-4">
+                        {service.useCases.map((useCase, idx) => (
+                            <div
+                                key={idx}
+                                className="border-l-2 border-purple-500/40 pl-4 py-2"
+                            >
+                                <p className="text-sm text-muted-foreground">{useCase}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* System Flow - Mind Map */}
+            <section className="py-16 md:py-20">
+                <div className="max-w-3xl mx-auto px-6">
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground mb-8 text-center">
+                        System Flow
+                    </p>
+                    <div className="bg-background/50 rounded-xl p-6 border border-border">
+                        <MindMapView root={service.mindMap} />
+                    </div>
                 </div>
             </section>
 
@@ -241,6 +329,17 @@ export default async function ServicePage({
                                 </p>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Philosophy */}
+            <section className="py-16 md:py-20">
+                <div className="max-w-xl mx-auto px-6">
+                    <div className="pt-8 border-t border-border text-center">
+                        <p className="text-muted-foreground italic">
+                            {service.philosophy}
+                        </p>
                     </div>
                 </div>
             </section>

@@ -6,12 +6,21 @@ export interface ServiceStep {
     description: string
 }
 
+export interface MindMapNode {
+    label: string
+    children?: MindMapNode[]
+}
+
 export interface ServiceData {
     slug: string
     icon: LucideIcon
     title: string
     tagline: string
     description: string
+    whatItIs: string
+    useCases: string[]
+    philosophy: string
+    mindMap: MindMapNode
     bullets: string[]
     gradient: string
     steps: ServiceStep[]
@@ -28,6 +37,23 @@ export const servicesData: ServiceData[] = [
         tagline: "Production-grade sites built for performance.",
         description:
             "Every project ships with SEO architecture, mobile-first design, SOC2-compliant codebase, and a maintainable stack your team can own.",
+        whatItIs: "We build production-grade websites and web applications. Not templates. Not WordPress. Not drag-and-drop builders. Every site ships as a maintainable codebase with SEO architecture, responsive design, and a deployment pipeline.",
+        useCases: [
+            "Founder replacing a Wix/Squarespace site with a custom-built, brandable presence",
+            "SaaS company needing a marketing site + docs site on a shared stack",
+            "Services business requiring a client intake portal with form logic",
+            "Startup launching an MVP web app with auth, payments, and a user dashboard"
+        ],
+        philosophy: "Every website we ship is written in code we own, test, and maintain. No page builders. No black-box plugins. The result is a codebase your team can inspect, extend, and deploy independently — without vendor lock-in.",
+        mindMap: { 
+            label: "Websites & Web Apps", 
+            children: [
+                { label: "Inputs", children: [{ label: "Business goals & audience" }, { label: "Content strategy" }, { label: "Brand assets" }] },
+                { label: "Engineering", children: [{ label: "Next.js / React / TypeScript" }, { label: "Responsive layout system" }, { label: "SEO: meta, schema, sitemap" }, { label: "Performance: Core Web Vitals" }] },
+                { label: "Outputs", children: [{ label: "Production deployment (Vercel / AWS)" }, { label: "Admin or CMS interface" }, { label: "Analytics integration" }] },
+                { label: "Post-Launch", children: [{ label: "Performance audit" }, { label: "30-day support window" }, { label: "Handoff documentation" }] }
+            ] 
+        },
         bullets: ["Mobile-first responsive", "Next.js + TypeScript + Web3", "SEO architecture baked in", "Conversion-optimized"],
         gradient: "from-blue-500/20 to-purple-500/20",
         steps: [
@@ -76,6 +102,23 @@ export const servicesData: ServiceData[] = [
         tagline: "Backend systems architected for your workflow.",
         description:
             "We build APIs, internal tools, and backend systems from scratch. Database-first design. Scalable architecture. Zero technical debt.",
+        whatItIs: "We build bespoke software systems — backends, APIs, dashboards, and internal tools — designed around how a specific business operates. Not off-the-shelf. Not low-code.",
+        useCases: [
+            "Operations team replacing a spreadsheet-based process with a dedicated internal tool",
+            "Company consolidating 5 disconnected SaaS tools into one unified system",
+            "Startup building a custom platform that doesn't exist yet",
+            "Business needing a secure API layer between legacy systems and modern frontends"
+        ],
+        philosophy: "We treat every system as infrastructure, not a project. That means clean architecture, documented APIs, tested code, and a deployment pipeline — not a codebase that only one developer can understand.",
+        mindMap: { 
+            label: "Custom Software Engineering", 
+            children: [
+                { label: "Inputs", children: [{ label: "Workflow analysis" }, { label: "Data model requirements" }, { label: "Integration map (existing tools)" }] },
+                { label: "Engineering", children: [{ label: "Database design (PostgreSQL / MongoDB)" }, { label: "API layer (REST / GraphQL)" }, { label: "Auth, roles, permissions" }, { label: "CI/CD pipeline" }] },
+                { label: "Outputs", children: [{ label: "Deployed application" }, { label: "API documentation" }, { label: "Database schema + migrations" }] },
+                { label: "Post-Launch", children: [{ label: "Monitoring & alerting" }, { label: "60-day support window" }, { label: "Team training session" }] }
+            ] 
+        },
         bullets: ["Custom REST/GraphQL APIs", "PostgreSQL/MongoDB design", "Docker + AWS deployment", "Zero technical debt"],
         gradient: "from-purple-500/20 to-pink-500/20",
         steps: [
@@ -127,6 +170,23 @@ export const servicesData: ServiceData[] = [
         tagline: "24/7 frontline that qualifies leads and books meetings.",
         description:
             "Handles pricing queries, product questions, and booking. Average 35% lift in qualified leads. Saves 20+ hours/week on repetitive queries. Trained on your docs. Integrated with your CRM.",
+        whatItIs: "We build AI chatbots trained on the client's own data — not generic widget installs, but engineered conversational systems with defined intent, fallback logic, and human handoff.",
+        useCases: [
+            "Services business automating first-response for inbound inquiries",
+            "E-commerce store handling pre-sale questions and order status",
+            "SaaS company deflecting tier-1 support tickets with AI",
+            "Agency qualifying leads before routing to a sales rep"
+        ],
+        philosophy: "A chatbot is only useful if it answers correctly. We train every bot against verified business data, test edge cases before launch, and monitor response accuracy post-deployment. No hallucinations shipped to production.",
+        mindMap: { 
+            label: "AI Chatbots & Assistants", 
+            children: [
+                { label: "Inputs", children: [{ label: "FAQs, docs, knowledge base" }, { label: "Intent map (what users ask)" }, { label: "Brand voice guidelines" }] },
+                { label: "Engineering", children: [{ label: "RAG pipeline (embeddings + retrieval)" }, { label: "Conversation state management" }, { label: "Human handoff logic" }, { label: "Widget integration (site / app)" }] },
+                { label: "Outputs", children: [{ label: "Deployed chatbot with branding" }, { label: "Lead capture + CRM sync" }, { label: "Chat analytics dashboard" }] },
+                { label: "Post-Launch", children: [{ label: "Monthly response accuracy review" }, { label: "Knowledge base updates" }, { label: "Conversion rate tracking" }] }
+            ] 
+        },
         bullets: ["24/7 instant responses", "Qualifies & books automatically", "~35% more qualified leads", "Saves 20+ hours weekly"],
         gradient: "from-cyan-500/20 to-blue-500/20",
         steps: [
@@ -174,6 +234,23 @@ export const servicesData: ServiceData[] = [
         tagline: "Inbound/outbound calls handled autonomously.",
         description:
             "Natural voice agents book meetings, qualify leads, and follow up. Average 40% increase in booked calls. Replaces 2-3 full-time receptionists. Syncs with CRM and calendar in real-time.",
+        whatItIs: "We build AI-powered phone systems that handle real conversations — scheduling, follow-ups, and support — without a human on the line.",
+        useCases: [
+            "Medical or dental practice automating appointment booking and reminders",
+            "Real estate agency following up with leads within minutes of inquiry",
+            "Service business handling after-hours calls without a call center",
+            "Sales team running outbound qualification at scale"
+        ],
+        philosophy: "Voice AI is high-stakes — a bad call flow damages trust. We design every conversation path with explicit fallback logic, test against real scenarios, and monitor call outcomes. No call goes live without a dry run.",
+        mindMap: { 
+            label: "AI Voice & Calling", 
+            children: [
+                { label: "Inputs", children: [{ label: "Call flow requirements" }, { label: "CRM / calendar access" }, { label: "Voice and tone preferences" }] },
+                { label: "Engineering", children: [{ label: "Conversation design (branching logic)" }, { label: "Voice synthesis (ElevenLabs / Vapi)" }, { label: "Telephony integration (Twilio)" }, { label: "CRM sync + data capture" }] },
+                { label: "Outputs", children: [{ label: "Live AI phone agent" }, { label: "Call recordings + transcripts" }, { label: "Performance dashboard" }] },
+                { label: "Post-Launch", children: [{ label: "Call outcome monitoring" }, { label: "Flow refinement" }, { label: "Optional retainer for ongoing optimization" }] }
+            ] 
+        },
         bullets: ["Natural voice conversations", "~40% more bookings", "Replaces 2-3 FTEs", "CRM + calendar sync"],
         gradient: "from-violet-500/20 to-purple-500/20",
         steps: [
@@ -221,6 +298,23 @@ export const servicesData: ServiceData[] = [
         tagline: "Repetitive work eliminated. Ops on autopilot.",
         description:
             "Workflow orchestration across 50+ tools. Event-driven triggers. Real-time data sync. Full audit logging.",
+        whatItIs: "We build automated workflows that eliminate repetitive manual processes — connecting tools, triggering actions, and moving data without human intervention.",
+        useCases: [
+            "Agency auto-routing new client inquiries to the right team with context",
+            "E-commerce store syncing orders, inventory, and fulfillment across platforms",
+            "Recruiting firm automating candidate pipeline stages and notifications",
+            "Operations team replacing a 12-step manual process with a single trigger"
+        ],
+        philosophy: "Automation without structure creates new problems. Every workflow we build has defined triggers, explicit error states, and logging — so when something breaks, you know exactly where and why.",
+        mindMap: { 
+            label: "AI Automation & Workflows", 
+            children: [
+                { label: "Inputs", children: [{ label: "Process audit (current manual steps)" }, { label: "Tool inventory (SaaS, APIs, DBs)" }, { label: "Trigger definitions" }] },
+                { label: "Engineering", children: [{ label: "Workflow design (n8n / Make)" }, { label: "API connectors + webhooks" }, { label: "Conditional logic + branching" }, { label: "Error handling + retry logic" }] },
+                { label: "Outputs", children: [{ label: "Live automation workflows" }, { label: "Monitoring dashboard" }, { label: "Process documentation" }] },
+                { label: "Post-Launch", children: [{ label: "Failure alerting" }, { label: "Monthly workflow review" }, { label: "Expansion to adjacent processes" }] }
+            ] 
+        },
         bullets: ["Automated social posting", "Scraping & data sorting", "Customized outreach sequences", "Full audit logging"],
         gradient: "from-indigo-500/20 to-cyan-500/20",
         steps: [
@@ -268,6 +362,23 @@ export const servicesData: ServiceData[] = [
         tagline: "Enterprise-grade AI embedded in your stack.",
         description:
             "We embed fine-tuned LLMs directly into your systems. RAG pipelines, vector search, retrieval evaluation. SOC2-compliant. Cost controls included.",
+        whatItIs: "We integrate large language models into existing software systems — not as standalone chatbots, but as embedded intelligence within production applications.",
+        useCases: [
+            "Legal firm adding AI-powered contract analysis to their internal platform",
+            "Healthcare company building a clinical document summarizer with compliance guardrails",
+            "Fintech product embedding transaction classification using fine-tuned models",
+            "Enterprise adding natural-language search across internal knowledge repositories"
+        ],
+        philosophy: "LLMs are powerful but unpredictable. We treat every integration as a systems engineering problem — with defined inputs, tested outputs, cost monitoring, and fallback behavior. No model goes to production without evaluation benchmarks.",
+        mindMap: { 
+            label: "Custom LLM Integration", 
+            children: [
+                { label: "Inputs", children: [{ label: "Existing system architecture" }, { label: "Data sources (docs, DBs, APIs)" }, { label: "Use case definition" }] },
+                { label: "Engineering", children: [{ label: "Model selection (GPT-4, Claude, open-source)" }, { label: "RAG pipeline (embeddings → vector DB → retrieval)" }, { label: "Prompt framework (versioned, evaluated)" }, { label: "API layer (auth, rate limits, logging)" }, { label: "Cost and latency monitoring" }] },
+                { label: "Outputs", children: [{ label: "LLM-powered feature in production" }, { label: "Evaluation benchmarks + test suite" }, { label: "Documentation + runbooks" }] },
+                { label: "Post-Launch", children: [{ label: "Model performance monitoring" }, { label: "Prompt drift detection" }, { label: "Cost optimization reviews" }] }
+            ] 
+        },
         bullets: ["Fine-tuned on your data", "RAG + vector DB", "Enterprise security", "Cost controls built-in"],
         gradient: "from-amber-500/20 to-orange-500/20",
         steps: [

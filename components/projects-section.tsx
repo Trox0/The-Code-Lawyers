@@ -1,32 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { projectsData } from "@/lib/projects-data"
 
-const projects = [
-  {
-    title: "Student Moderation & Management App",
-    description:
-      "A real application to manage student activity and moderation workflows.",
-    image: "/LetsCatchUp.png",
-    techStack: "React Native, Node.js, Couchbase",
-    gradient: "from-blue-500/40 to-purple-500/40",
-  },
-  {
-    title: "Crowdfunding DAPP",
-    description: "Crowdfunding platform with modern UI and responsive design.",
-    image: "/CrowdFundingDapp.png",
-    techStack: "Solidity, React, Web3.js",
-    gradient: "from-purple-500/40 to-pink-500/40",
-  },
-  {
-    title: "AI Automation DevOPs workflow",
-    description: "AI automation workflow for DevOps of multiple MNCs.",
-    image: "/AIAutomation.png",
-    techStack: "n8n automations",
-    gradient: "from-cyan-500/40 to-purple-500/40",
-  },
-]
+const projects = projectsData
 
 export function ProjectsSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -72,9 +51,10 @@ export function ProjectsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`group cursor-pointer transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+            <Link
+              key={project.slug}
+              href={`/projects/${project.slug}`}
+              className={`group block transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Card container with glassmorphism */}
@@ -116,9 +96,9 @@ export function ProjectsSection() {
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    {project.description}
+                    {project.tagline}
                   </p>
-                  <span className="text-purple-400">{project.techStack}</span>
+                  <span className="text-purple-400">{project.techStackSummary}</span>
 
                   {/* Decorative line */}
                   <div
@@ -129,7 +109,7 @@ export function ProjectsSection() {
                   />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -7,23 +7,23 @@ import { servicesData } from "@/lib/services-data"
 
 function highlightText(text: string) {
   const keywords = [
-    "SOC2-compliant codebase", "Web3", "Next.js", "TypeScript", "REST", "GraphQL", "PostgreSQL", 
+    "SOC2-compliant codebase", "Web3", "Next.js", "TypeScript", "REST", "GraphQL", "PostgreSQL",
     "MongoDB", "Docker", "AWS", "API", "APIs", "RAG", "vector", "LLM",
     "SOC2-compliant", "GPT", "LangChain", "Pinecone", "WebSocket",
-    "SEO architecture", "codebase", "scalable architecture", 
+    "SEO architecture", "codebase", "scalable architecture",
     "Average 35%", "Average 40%", "20+ hours", "your docs", "your CRM",
     "2-3", "FTEs", "CRM", "calendar", "qualified leads", "Syncs",
     "Workflow orchestration", "Event-driven", "Real-time data sync", "Full audit logging", "50+"
   ]
-  
+
   let result = text
   keywords.forEach(kw => {
     const regex = new RegExp(`(${kw})`, 'gi')
     result = result.replace(regex, '|||$1|||')
   })
-  
+
   const parts = result.split('|||')
-  
+
   return parts.map((part, i) => {
     const clean = part.trim()
     if (keywords.some(k => k.toLowerCase() === clean.toLowerCase())) {
@@ -145,9 +145,10 @@ export function ServicesSection() {
             const Icon = service.icon
 
             return (
-              <article
+              <Link
                 key={service.slug}
-                className={`group relative transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+                href={`/services/${service.slug}`}
+                className={`group relative transition-all duration-500 block ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div
@@ -156,8 +157,8 @@ export function ServicesSection() {
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
-                    border: service.highlighted 
-                      ? '1px solid rgba(245,158,11,0.3)' 
+                    border: service.highlighted
+                      ? '1px solid rgba(245,158,11,0.3)'
                       : '1px solid rgba(255,255,255,0.08)',
                     boxShadow: service.highlighted
                       ? '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(245,158,11,0.1)'
@@ -209,14 +210,11 @@ export function ServicesSection() {
                     <AnimatedBullets bullets={service.bullets} highlighted={service.highlighted} />
                   </div>
 
-                  {/* Learn More link */}
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto group/link"
-                  >
+                  {/* Learn More indicator */}
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-purple-400 group-hover:text-purple-300 transition-colors mt-auto">
                     Learn More
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
-                  </Link>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </span>
 
                   {/* Bottom accent line */}
                   <div
@@ -226,7 +224,7 @@ export function ServicesSection() {
                     }}
                   />
                 </div>
-              </article>
+              </Link>
             )
           })}
         </div>
