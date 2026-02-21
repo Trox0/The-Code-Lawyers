@@ -83,7 +83,7 @@ export default async function StackPage({
                     {/* Back to Project */}
                     <Link
                         href={`/projects/${project.slug}`}
-                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-purple-400 transition-colors mb-8"
                     >
                         <ArrowLeft className="h-4 w-4" />
                         <span className="text-sm">Back to {project.title}</span>
@@ -108,7 +108,7 @@ export default async function StackPage({
                         {sectionData.bullets.map((bullet, idx) => (
                             <div
                                 key={idx}
-                                className="flex items-start gap-3 p-4 rounded-xl"
+                                className="flex items-start gap-3 p-4 rounded-xl hover:border-purple-500/20 hover:shadow-md transition-all duration-300"
                                 style={{
                                     background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
                                     border: "1px solid rgba(255,255,255,0.06)",
@@ -129,7 +129,7 @@ export default async function StackPage({
                                 key={other.key}
                                 asChild
                                 variant="outline"
-                                className="flex-1 justify-between sm:justify-start gap-2"
+                                className="flex-1 justify-between sm:justify-start gap-2 hover:border-purple-500/30 hover:bg-purple-500/5"
                             >
                                 <Link href={`/projects/${project.slug}/${other.key}`}>
                                     {other.key === "problem" && <ArrowLeft className="h-4 w-4" />}

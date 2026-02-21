@@ -37,14 +37,14 @@ export const servicesData: ServiceData[] = [
         tagline: "Production-grade sites built for performance.",
         description:
             "Every project ships with SEO architecture, mobile-first design, SOC2-compliant codebase, and a maintainable stack your team can own.",
-        whatItIs: "We build production-grade websites and web applications. Not templates. Not WordPress. Not drag-and-drop builders. Every site ships as a maintainable codebase with SEO architecture, responsive design, and a deployment pipeline.",
+        whatItIs: "We build production-grade websites and web applications. Every site ships as a maintainable codebase with SEO architecture, responsive design, and a deployment pipeline. No templates. No page builders. Just clean code your team owns.",
         useCases: [
             "Founder replacing a Wix/Squarespace site with a custom-built, brandable presence",
-            "SaaS company needing a marketing site + docs site on a shared stack",
+            "SaaS company needing a marketing site plus docs site on a shared stack",
             "Services business requiring a client intake portal with form logic",
             "Startup launching an MVP web app with auth, payments, and a user dashboard"
         ],
-        philosophy: "Every website we ship is written in code we own, test, and maintain. No page builders. No black-box plugins. The result is a codebase your team can inspect, extend, and deploy independently — without vendor lock-in.",
+        philosophy: "Every website we ship is written in code we own, test, and maintain. No page builders. No black-box plugins. The result is a codebase your team can inspect, extend, and deploy independently.",
         mindMap: { 
             label: "Websites & Web Apps", 
             children: [
@@ -65,12 +65,12 @@ export const servicesData: ServiceData[] = [
             {
                 title: "Design",
                 description:
-                    "Wireframes and high-fidelity mockups. You approve every screen before a single line of code is written.",
+                    "Wireframes and high-fidelity mockups. You approve every screen before code is written.",
             },
             {
                 title: "Development",
                 description:
-                    "Clean, maintainable code using Next.js, React, and TypeScript. Mobile-first and fully responsive.",
+                    "Clean code using Next.js, React, and TypeScript. Mobile-first and fully responsive.",
             },
             {
                 title: "Launch & Optimize",
@@ -102,14 +102,14 @@ export const servicesData: ServiceData[] = [
         tagline: "Backend systems architected for your workflow.",
         description:
             "We build APIs, internal tools, and backend systems from scratch. Database-first design. Scalable architecture. Zero technical debt.",
-        whatItIs: "We build bespoke software systems — backends, APIs, dashboards, and internal tools — designed around how a specific business operates. Not off-the-shelf. Not low-code.",
+        whatItIs: "We build bespoke software systems designed around how a specific business operates. Backends, APIs, dashboards, and internal tools built from scratch to match your exact workflow.",
         useCases: [
             "Operations team replacing a spreadsheet-based process with a dedicated internal tool",
             "Company consolidating 5 disconnected SaaS tools into one unified system",
-            "Startup building a custom platform that doesn't exist yet",
+            "Startup building a custom platform that does not exist yet",
             "Business needing a secure API layer between legacy systems and modern frontends"
         ],
-        philosophy: "We treat every system as infrastructure, not a project. That means clean architecture, documented APIs, tested code, and a deployment pipeline — not a codebase that only one developer can understand.",
+        philosophy: "We treat every system as infrastructure, not a project. That means clean architecture, documented APIs, tested code, and a deployment pipeline.",
         mindMap: { 
             label: "Custom Software Engineering", 
             children: [
@@ -169,15 +169,15 @@ export const servicesData: ServiceData[] = [
         title: "AI Chatbots & Assistants",
         tagline: "24/7 frontline that qualifies leads and books meetings.",
         description:
-            "Handles pricing queries, product questions, and booking. Average 35% lift in qualified leads. Saves 20+ hours/week on repetitive queries. Trained on your docs. Integrated with your CRM.",
-        whatItIs: "We build AI chatbots trained on the client's own data — not generic widget installs, but engineered conversational systems with defined intent, fallback logic, and human handoff.",
+            "Handles pricing queries, product questions, and booking. Average 35% lift in qualified leads. Saves 20+ hours per week on repetitive queries. Trained on your docs. Integrated with your CRM.",
+        whatItIs: "We build AI chatbots trained on your own data. These are engineered conversational systems with defined intent, fallback logic, and human handoff. Not generic widget installs.",
         useCases: [
-            "Services business automating first-response for inbound inquiries",
+            "Services business automating first response for inbound inquiries",
             "E-commerce store handling pre-sale questions and order status",
             "SaaS company deflecting tier-1 support tickets with AI",
             "Agency qualifying leads before routing to a sales rep"
         ],
-        philosophy: "A chatbot is only useful if it answers correctly. We train every bot against verified business data, test edge cases before launch, and monitor response accuracy post-deployment. No hallucinations shipped to production.",
+        philosophy: "A chatbot is only useful if it answers correctly. We train every bot against verified business data and test edge cases before launch.",
         mindMap: { 
             label: "AI Chatbots & Assistants", 
             children: [
@@ -203,7 +203,7 @@ export const servicesData: ServiceData[] = [
             {
                 title: "Integration & Testing",
                 description:
-                    "Embed into your website with seamless handoff to human agents. Tested with real scenarios.",
+                    "Embed into your website with seamless handoff to human agents. Test with real scenarios.",
             },
             {
                 title: "Monitoring & Improvement",
@@ -234,14 +234,14 @@ export const servicesData: ServiceData[] = [
         tagline: "Inbound/outbound calls handled autonomously.",
         description:
             "Natural voice agents book meetings, qualify leads, and follow up. Average 40% increase in booked calls. Replaces 2-3 full-time receptionists. Syncs with CRM and calendar in real-time.",
-        whatItIs: "We build AI-powered phone systems that handle real conversations — scheduling, follow-ups, and support — without a human on the line.",
+        whatItIs: "We build AI-powered phone systems that handle real conversations. Scheduling, follow-ups, and support without a human on the line.",
         useCases: [
             "Medical or dental practice automating appointment booking and reminders",
             "Real estate agency following up with leads within minutes of inquiry",
             "Service business handling after-hours calls without a call center",
             "Sales team running outbound qualification at scale"
         ],
-        philosophy: "Voice AI is high-stakes — a bad call flow damages trust. We design every conversation path with explicit fallback logic, test against real scenarios, and monitor call outcomes. No call goes live without a dry run.",
+        philosophy: "Voice AI is high-stakes. A bad call flow damages trust. We design every conversation path with explicit fallback logic and test against real scenarios.",
         mindMap: { 
             label: "AI Voice & Calling", 
             children: [
@@ -298,14 +298,14 @@ export const servicesData: ServiceData[] = [
         tagline: "Repetitive work eliminated. Ops on autopilot.",
         description:
             "Workflow orchestration across 50+ tools. Event-driven triggers. Real-time data sync. Full audit logging.",
-        whatItIs: "We build automated workflows that eliminate repetitive manual processes — connecting tools, triggering actions, and moving data without human intervention.",
+        whatItIs: "We build automated workflows that eliminate repetitive manual processes. Connecting tools, triggering actions, and moving data without human intervention.",
         useCases: [
             "Agency auto-routing new client inquiries to the right team with context",
             "E-commerce store syncing orders, inventory, and fulfillment across platforms",
             "Recruiting firm automating candidate pipeline stages and notifications",
             "Operations team replacing a 12-step manual process with a single trigger"
         ],
-        philosophy: "Automation without structure creates new problems. Every workflow we build has defined triggers, explicit error states, and logging — so when something breaks, you know exactly where and why.",
+        philosophy: "Automation without structure creates new problems. Every workflow we build has defined triggers, explicit error states, and logging.",
         mindMap: { 
             label: "AI Automation & Workflows", 
             children: [
@@ -362,19 +362,19 @@ export const servicesData: ServiceData[] = [
         tagline: "Enterprise-grade AI embedded in your stack.",
         description:
             "We embed fine-tuned LLMs directly into your systems. RAG pipelines, vector search, retrieval evaluation. SOC2-compliant. Cost controls included.",
-        whatItIs: "We integrate large language models into existing software systems — not as standalone chatbots, but as embedded intelligence within production applications.",
+        whatItIs: "We integrate large language models into existing software systems. Not as standalone chatbots, but as embedded intelligence within production applications.",
         useCases: [
             "Legal firm adding AI-powered contract analysis to their internal platform",
             "Healthcare company building a clinical document summarizer with compliance guardrails",
             "Fintech product embedding transaction classification using fine-tuned models",
             "Enterprise adding natural-language search across internal knowledge repositories"
         ],
-        philosophy: "LLMs are powerful but unpredictable. We treat every integration as a systems engineering problem — with defined inputs, tested outputs, cost monitoring, and fallback behavior. No model goes to production without evaluation benchmarks.",
+        philosophy: "LLMs are powerful but unpredictable. We treat every integration as a systems engineering problem with defined inputs, tested outputs, cost monitoring, and fallback behavior.",
         mindMap: { 
             label: "Custom LLM Integration", 
             children: [
                 { label: "Inputs", children: [{ label: "Existing system architecture" }, { label: "Data sources (docs, DBs, APIs)" }, { label: "Use case definition" }] },
-                { label: "Engineering", children: [{ label: "Model selection (GPT-4, Claude, open-source)" }, { label: "RAG pipeline (embeddings → vector DB → retrieval)" }, { label: "Prompt framework (versioned, evaluated)" }, { label: "API layer (auth, rate limits, logging)" }, { label: "Cost and latency monitoring" }] },
+                { label: "Engineering", children: [{ label: "Model selection (GPT-4, Claude, open-source)" }, { label: "RAG pipeline (embeddings -> vector DB -> retrieval)" }, { label: "Prompt framework (versioned, evaluated)" }, { label: "API layer (auth, rate limits, logging)" }, { label: "Cost and latency monitoring" }] },
                 { label: "Outputs", children: [{ label: "LLM-powered feature in production" }, { label: "Evaluation benchmarks + test suite" }, { label: "Documentation + runbooks" }] },
                 { label: "Post-Launch", children: [{ label: "Model performance monitoring" }, { label: "Prompt drift detection" }, { label: "Cost optimization reviews" }] }
             ] 

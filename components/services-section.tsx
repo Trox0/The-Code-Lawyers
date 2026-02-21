@@ -80,8 +80,8 @@ function AnimatedBullets({ bullets, highlighted }: { bullets: string[]; highligh
           key={idx}
           className="flex items-center gap-2"
         >
-          <div className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all duration-200 ${activeIndex === idx ? activeColor + " scale-125" : "bg-muted-foreground/30"}`} />
-          <span className={`text-xs transition-all duration-200 ${activeIndex === idx ? textActiveColor + " translate-x-1 font-medium" : "text-muted-foreground"}`}>
+          <div className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all duration-200 ${activeIndex === idx ? activeColor + " scale-125" : "bg-white/30"}`} />
+          <span className={`text-xs transition-all duration-200 ${activeIndex === idx ? textActiveColor + " translate-x-1 font-medium" : "text-white/80"}`}>
             {bullet}
           </span>
         </div>
@@ -185,7 +185,10 @@ export function ServicesSection() {
                   />
 
                   {/* Icon */}
-                  <div className="relative inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 bg-purple-500/10 group-hover:bg-purple-500/20 transition-all duration-300">
+                  <div 
+                    className="relative inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 bg-purple-500/10 group-hover:bg-purple-500/20 transition-all duration-300 animate-icon-float"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
                     <Icon className="h-7 w-7 text-purple-400 transition-all duration-300 group-hover:scale-110 group-hover:text-purple-300" />
                     <div className="absolute inset-0 rounded-xl bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
                   </div>
@@ -198,10 +201,10 @@ export function ServicesSection() {
                   )}
 
                   {/* Title & Description */}
-                  <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                  <h3 className="text-lg font-bold uppercase tracking-wider text-purple-400 mb-3 group-hover:text-purple-300 transition-colors duration-300 pb-1 border-b border-purple-500/30 group-hover:border-purple-400">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
+                  <p className="text-white/80 text-sm leading-relaxed mb-6 flex-grow">
                     {highlightText(service.description)}
                   </p>
 
@@ -211,7 +214,7 @@ export function ServicesSection() {
                   </div>
 
                   {/* Learn More indicator */}
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-purple-400 group-hover:text-purple-300 transition-colors mt-auto">
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-purple-400 group-hover:text-purple-300 transition-colors mt-auto animate-learn-more-pulse">
                     Learn More
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </span>

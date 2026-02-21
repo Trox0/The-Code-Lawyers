@@ -124,6 +124,8 @@ export default async function ProjectPage({
                         />
                     </div>
                 </div>
+
+                <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
             </section>
 
             {/* Section Cards */}
@@ -134,7 +136,7 @@ export default async function ProjectPage({
                             <Link
                                 key={section.title}
                                 href={section.href}
-                                className="group relative p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                                className="group relative p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-500/20"
                                 style={{
                                     background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
                                     backdropFilter: "blur(10px)",

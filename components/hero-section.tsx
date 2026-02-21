@@ -130,7 +130,7 @@ export function HeroSection() {
           itemProp="description"
         >
           <TypewriterText
-            text="Websites that convert. Modern tech. AI that doubles your workforce."
+            text="Websites that convert. Compliance ready Modern tech. AI integration that doubles your workforce."
             delay={800}
           />
         </p>

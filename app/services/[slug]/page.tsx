@@ -150,12 +150,14 @@ export default async function ServicePage({
                         {service.description}
                     </p>
                 </div>
+
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
             </section>
 
             {/* What It Is */}
-            <section className="py-16 md:py-20">
+            <section className="py-16 md:py-20 border-t border-border/50">
                 <div className="max-w-2xl mx-auto px-6 text-center">
-                    <p className="text-lg text-foreground leading-relaxed">
+                    <p className="text-lg text-foreground/90 leading-relaxed">
                         {service.whatItIs}
                     </p>
                 </div>
@@ -171,7 +173,7 @@ export default async function ServicePage({
                         {service.useCases.map((useCase, idx) => (
                             <div
                                 key={idx}
-                                className="border-l-2 border-purple-500/40 pl-4 py-2"
+                                className="border-l-2 border-purple-500/30 pl-4 py-2 hover:border-purple-400 hover:bg-purple-500/5 transition-all duration-300 rounded-r-lg"
                             >
                                 <p className="text-sm text-muted-foreground">{useCase}</p>
                             </div>
@@ -186,7 +188,7 @@ export default async function ServicePage({
                     <p className="text-sm uppercase tracking-widest text-muted-foreground mb-8 text-center">
                         System Flow
                     </p>
-                    <div className="bg-background/50 rounded-xl p-6 border border-border">
+                    <div className="bg-background/50 rounded-xl p-6 border border-border shadow-lg shadow-purple-500/5">
                         <MindMapView root={service.mindMap} />
                     </div>
                 </div>
@@ -316,7 +318,7 @@ export default async function ServicePage({
                         {service.deliverables.map((item, index) => (
                             <div
                                 key={index}
-                                className="flex items-start gap-3 p-4 rounded-xl transition-all duration-300 hover:translate-x-2"
+                                className="flex items-start gap-3 p-4 rounded-xl transition-all duration-300 hover:translate-x-2 hover:border-purple-500/20 hover:shadow-md"
                                 style={{
                                     background:
                                         "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
@@ -336,8 +338,8 @@ export default async function ServicePage({
             {/* Philosophy */}
             <section className="py-16 md:py-20">
                 <div className="max-w-xl mx-auto px-6">
-                    <div className="pt-8 border-t border-border text-center">
-                        <p className="text-muted-foreground italic">
+                    <div className="bg-purple-500/5 border border-purple-500/15 rounded-xl p-6 text-center">
+                        <p className="text-foreground/80 text-sm leading-relaxed">
                             {service.philosophy}
                         </p>
                     </div>

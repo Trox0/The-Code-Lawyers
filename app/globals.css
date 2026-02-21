@@ -237,3 +237,31 @@ html {
   outline: 2px solid rgba(147, 51, 234, 0.5);
   outline-offset: 2px;
 }
+
+/* Learn More pulse animation */
+@keyframes learnMorePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Icon float animation */
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-learn-more-pulse {
+  animation: learnMorePulse 2s ease-in-out infinite;
+}
+
+.animate-icon-float {
+  animation: iconFloat 3s ease-in-out infinite;
+}
