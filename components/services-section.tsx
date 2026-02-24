@@ -152,7 +152,7 @@ export function ServicesSection() {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div
-                  className="relative p-8 rounded-xl h-full flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                  className="relative p-5 md:p-8 rounded-xl h-full flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                   style={{
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
                     backdropFilter: 'blur(20px)',

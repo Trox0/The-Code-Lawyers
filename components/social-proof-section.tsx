@@ -88,7 +88,7 @@ export function SocialProofSection() {
           Delivering real outcomes for 30+ businesses and counting
         </p>
 
-        <div className="mt-12 flex items-center justify-center gap-8 md:gap-12 flex-wrap">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -142,7 +142,7 @@ export function SocialProofSection() {
             READY TO TRANSFORM YOUR BUSINESS?
           </p>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             Request{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
               a Call.

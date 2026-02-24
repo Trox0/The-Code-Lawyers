@@ -104,19 +104,17 @@ export function HeroSection() {
         <p
           className={`text-sm uppercase tracking-widest text-muted-foreground mb-6 transition-all duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           itemProp="alternativeHeadline"
-        >
-          Software & AI That Delivers Results
-        </p>
+        />
 
         <h1
           className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground mb-8 transition-all duration-500 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           itemProp="headline"
         >
           <span className="block">We Build</span>
-          <span className="text-purple-500 block relative h-[1.2em] my-2" aria-live="polite" aria-atomic="true">
+          <span className="text-purple-500 block relative h-auto min-h-[1.2em] my-2" aria-live="polite" aria-atomic="true">
             <span
               key={currentWordIndex}
-              className="absolute left-1/2 -translate-x-1/2 animate-[fadeInOut_2s_ease-in-out] whitespace-nowrap"
+              className="absolute left-1/2 -translate-x-1/2 animate-[fadeInOut_2s_ease-in-out] whitespace-normal w-full px-4"
             >
               {words[currentWordIndex]}
             </span>

@@ -92,7 +92,7 @@ export function FounderSection() {
       <div className={`flex ${isVertical ? 'flex-col' : 'flex-col md:flex-row'} items-center gap-6 md:gap-10 relative z-10`}>
         <div className="relative w-32 h-32 md:w-40 md:h-40 shrink-0 group/image">
           <div
-            className="absolute -inset-3 rounded-full opacity-50 animate-pulse"
+            className="absolute -inset-3 rounded-full opacity-50 hidden md:block animate-pulse"
             style={{
               background: 'linear-gradient(135deg, rgba(147,51,234,0.4), rgba(79,70,229,0.4))',
               filter: 'blur(15px)',

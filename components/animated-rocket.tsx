@@ -8,36 +8,37 @@ export function AnimatedRocket() {
 
     useEffect(() => {
         let rafId: number
+        let currentY = 0
+        let targetY = 0
+        let running = true
 
-        const updatePosition = () => {
-            if (!rocketRef.current) return
-
+        const getTargetY = () => {
             const scrollY = window.scrollY
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight
-            const progress = Math.min(scrollY / maxScroll, 1)
-
-            // Position from top to bottom of viewport
-            const rocketY = progress * (window.innerHeight - 100)
-
-            // Direct DOM update - no React re-render
-            rocketRef.current.style.transform = `translateY(${rocketY}px) rotate(180deg)`
+            const progress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0
+            return progress * (window.innerHeight - 100)
         }
 
-        const handleScroll = () => {
-            if (rafId) cancelAnimationFrame(rafId)
-            rafId = requestAnimationFrame(updatePosition)
+        // Continuous lerp loop — runs every frame for buttery smooth movement
+        const animate = () => {
+            if (!running) return
+            targetY = getTargetY()
+            // Ease toward target: 0.12 = smooth but responsive
+            currentY += (targetY - currentY) * 0.12
+            if (rocketRef.current) {
+                rocketRef.current.style.transform = `translate3d(0, ${currentY}px, 0) rotate(180deg)`
+            }
+            rafId = requestAnimationFrame(animate)
         }
 
-        // Initial position
-        updatePosition()
-
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        window.addEventListener('resize', updatePosition)
+        // Seed initial position
+        currentY = getTargetY()
+        targetY = currentY
+        rafId = requestAnimationFrame(animate)
 
         return () => {
+            running = false
             if (rafId) cancelAnimationFrame(rafId)
-            window.removeEventListener('scroll', handleScroll)
-            window.removeEventListener('resize', updatePosition)
         }
     }, [])
 
@@ -72,7 +73,6 @@ export function AnimatedRocket() {
                 }`}
             style={{
                 top: '80px', // Start below header
-                transition: 'transform 0.1s linear, scale 0.2s ease-out',
                 willChange: 'transform',
             }}
             onTouchStart={handleTouchStart}
@@ -83,10 +83,10 @@ export function AnimatedRocket() {
         >
             <div className="relative">
                 {/* Rocket SVG */}
-                <svg width="40" height="80" viewBox="0 0 40 80" className="drop-shadow-[0_0_10px_rgba(167,139,250,0.5)]">
+                <svg width="40" height="80" viewBox="0 0 40 80">
                     {/* Rocket flame */}
                     <ellipse cx="20" cy="75" rx="6" ry="10" fill="url(#flameGradient)" className="animate-pulse" />
-                    <ellipse cx="20" cy="73" rx="4" ry="6" fill="#fbbf24" className="animate-pulse" />
+                    <ellipse cx="20" cy="73" rx="4" ry="6" fill="#fbbf24" />
 
                     {/* Rocket body */}
                     <path
@@ -132,7 +132,7 @@ export function AnimatedRocket() {
 
                 {/* Engine glow */}
                 <div
-                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-12 rounded-full blur-md animate-pulse"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-12 rounded-full blur-sm"
                     style={{
                         background: "linear-gradient(to bottom, rgba(251,146,60,0.6), rgba(239,68,68,0.4), transparent)",
                     }}

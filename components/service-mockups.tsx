@@ -15,7 +15,7 @@ export function ServiceMockups({ forceHover }: { forceHover?: boolean }) {
         <>
             {/* Website Mockup - Left */}
             <div
-                className={`absolute left-[2%] top-[15%] z-20 transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
+                className={`hidden md:block absolute left-[2%] top-[15%] z-20 transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
                     }`}
                 aria-hidden="true"
             >
@@ -55,7 +55,7 @@ export function ServiceMockups({ forceHover }: { forceHover?: boolean }) {
 
             {/* Mobile Mockup - Right */}
             <div
-                className={`absolute right-[4%] top-[15%] z-20 transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+                className={`hidden md:block absolute right-[4%] top-[15%] z-20 transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
                     }`}
                 aria-hidden="true"
             >

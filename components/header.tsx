@@ -33,16 +33,16 @@ export function Header() {
           {/* Logo/Brand - Important for SEO */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 text-xl font-semibold tracking-tight text-foreground hover:text-purple-400 transition-colors"
+            className="flex items-center gap-2 text-base md:text-xl font-semibold tracking-tight text-foreground hover:text-purple-400 transition-colors"
             aria-label="The Code Lawyers - Home"
             itemProp="url"
           >
             <Image
               src="/logo.png"
               alt="The Code Lawyers Logo"
-              width={56}
-              height={56}
-              className="rounded-md"
+              width={40}
+              height={40}
+              className="w-10 h-10 md:w-14 md:h-14 rounded-md"
               priority
             />
             <span
@@ -101,7 +101,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-purple-400 transition-colors py-2"
+                  className="text-sm text-muted-foreground hover:text-purple-400 transition-colors py-3"
                   onClick={() => setIsMenuOpen(false)}
                   aria-label={link.ariaLabel}
                 >
