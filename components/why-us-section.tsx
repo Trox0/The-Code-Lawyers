@@ -33,11 +33,11 @@ export function WhyUsSection() {
   }, [])
 
   return (
-    <section id="about" className="py-24 md:py-32 relative" ref={sectionRef}>
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div
-            className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
+            className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
           >
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="h-4 w-4 text-purple-500" />

@@ -185,7 +185,7 @@ export function ServicesSection() {
                   />
 
                   {/* Icon */}
-                  <div 
+                  <div
                     className="relative inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6 bg-purple-500/10 group-hover:bg-purple-500/20 transition-all duration-300 animate-icon-float"
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >

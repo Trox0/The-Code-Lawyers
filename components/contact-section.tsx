@@ -91,11 +91,11 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative" ref={sectionRef}>
+    <section id="contact" className="py-24 md:py-32 relative overflow-hidden" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           <div
-            className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
+            className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
           >
             <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Contact</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground mb-6 text-balance">
@@ -160,7 +160,7 @@ export function ContactSection() {
           >
             {/* Glow effect behind card */}
             <div
-              className="absolute -inset-4 rounded-2xl opacity-30 blur-3xl"
+              className="absolute inset-0 rounded-2xl opacity-30 blur-3xl"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(147,51,234,0.3), transparent 70%)',
               }}
@@ -234,10 +234,10 @@ export function ContactSection() {
                   type="submit"
                   disabled={isSubmitting}
                   className={`w-full relative overflow-hidden transition-all duration-300 ${submitStatus === "success"
-                      ? "bg-green-600 hover:bg-green-600"
-                      : submitStatus === "error"
-                        ? "bg-red-600 hover:bg-red-600"
-                        : "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600"
+                    ? "bg-green-600 hover:bg-green-600"
+                    : submitStatus === "error"
+                      ? "bg-red-600 hover:bg-red-600"
+                      : "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600"
                     } hover:scale-[1.02] shadow-lg shadow-purple-500/20`}
                 >
                   {isSubmitting ? (
