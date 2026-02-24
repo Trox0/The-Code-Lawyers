@@ -38,7 +38,7 @@ export function FounderSection() {
     {
       name: "Kshitij Sharma",
       role: "Co-Founder & CTO",
-      image: "/images/kshitij.jpg",
+      image: "/images/kshitij.jpeg",
       bio: (
         <>
           An <span className="text-purple-400 font-medium">SDE1</span> with 3.5 years of experience, bringing strong technical expertise from <span className="text-purple-400 font-medium">Mumbai</span>.
