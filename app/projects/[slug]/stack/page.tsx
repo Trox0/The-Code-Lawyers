@@ -6,6 +6,8 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { LazyBackgrounds } from "@/components/lazy-backgrounds"
 import { AnimatedRocket } from "@/components/animated-rocket"
+import { FloatUp } from "@/components/float-up"
+import { HighlightedText } from "@/components/highlighted-text"
 
 export function generateStaticParams() {
     return projectsData.map((project) => ({
@@ -51,7 +53,6 @@ export default async function StackPage({
         <main className="min-h-screen bg-background">
             <LazyBackgrounds />
             <AnimatedRocket />
-            {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                     <Link
@@ -77,68 +78,72 @@ export default async function StackPage({
                 </div>
             </header>
 
-            {/* Content */}
             <section className="pt-32 pb-16 md:pt-40 md:pb-24">
                 <div className="max-w-4xl mx-auto px-6">
-                    {/* Back to Project */}
-                    <Link
-                        href={`/projects/${project.slug}`}
-                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-purple-400 transition-colors mb-8"
-                    >
-                        <ArrowLeft className="h-4 w-4" />
-                        <span className="text-sm">Back to {project.title}</span>
-                    </Link>
+                    <FloatUp>
+                        <Link
+                            href={`/projects/${project.slug}`}
+                            className="inline-flex items-center gap-2 text-muted-foreground hover:text-purple-400 transition-colors mb-8"
+                        >
+                            <ArrowLeft className="h-4 w-4" />
+                            <span className="text-sm">Back to {project.title}</span>
+                        </Link>
+                    </FloatUp>
 
-                    {/* Title */}
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-12">
-                        {sectionData.title}
-                    </h1>
+                    <FloatUp delay={100}>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-12">
+                            {sectionData.title}
+                        </h1>
+                    </FloatUp>
 
-                    {/* Content paragraphs */}
                     <div className="space-y-6 mb-12">
                         {sectionData.content.map((item, idx) => (
-                            <p key={idx} className="text-muted-foreground text-base leading-relaxed">
-                                {item}
-                            </p>
+                            <FloatUp key={idx} delay={200 + idx * 50}>
+                                <p className="text-muted-foreground text-base leading-relaxed">
+                                    <HighlightedText text={item} keywords={sectionData.highlights} />
+                                </p>
+                            </FloatUp>
                         ))}
                     </div>
 
-                    {/* Bullets checklist */}
                     <div className="space-y-4 mb-16">
                         {sectionData.bullets.map((bullet, idx) => (
-                            <div
-                                key={idx}
-                                className="flex items-start gap-3 p-4 rounded-xl hover:border-purple-500/20 hover:shadow-md transition-all duration-300"
-                                style={{
-                                    background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-                                    border: "1px solid rgba(255,255,255,0.06)",
-                                }}
-                            >
-                                <CheckCircle className="h-5 w-5 text-purple-500 shrink-0 mt-0.5" />
-                                <p className="text-foreground text-sm leading-relaxed">
-                                    {bullet}
-                                </p>
-                            </div>
+                            <FloatUp key={idx} delay={400 + idx * 50}>
+                                <div
+                                    className="flex items-start gap-3 p-4 rounded-xl hover:border-purple-500/20 hover:shadow-md transition-all duration-300"
+                                    style={{
+                                        background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
+                                        border: "1px solid rgba(255,255,255,0.06)",
+                                        borderLeft: "3px solid rgba(6,182,212,0.5)",
+                                    }}
+                                >
+                                    <CheckCircle className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
+                                    <p className="text-foreground text-sm leading-relaxed">
+                                        <HighlightedText text={bullet} keywords={sectionData.highlights} />
+                                    </p>
+                                </div>
+                            </FloatUp>
                         ))}
                     </div>
 
-                    {/* Sibling navigation */}
-                    <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-border">
-                        {otherSections.map((other) => (
-                            <Button
-                                key={other.key}
-                                asChild
-                                variant="outline"
-                                className="flex-1 justify-between sm:justify-start gap-2 hover:border-purple-500/30 hover:bg-purple-500/5"
-                            >
-                                <Link href={`/projects/${project.slug}/${other.key}`}>
-                                    {other.key === "problem" && <ArrowLeft className="h-4 w-4" />}
-                                    {other.label}
-                                    {other.key === "architecture" && <ArrowRight className="h-4 w-4" />}
-                                </Link>
-                            </Button>
-                        ))}
-                    </div>
+                    <FloatUp delay={600}>
+                        <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-border">
+                            {otherSections.map((other) => (
+                                <Button
+                                    key={other.key}
+                                    asChild
+                                    variant="outline"
+                                    className="flex-1 justify-between sm:justify-start gap-2 hover:border-purple-500/30 hover:bg-purple-500/5"
+                                >
+                                    <Link href={`/projects/${project.slug}/${other.key}`}>
+                                        {other.key === "problem" && <ArrowLeft className="h-4 w-4" />}
+                                        {other.label}
+                                        {other.key === "architecture" && <ArrowRight className="h-4 w-4" />}
+                                    </Link>
+                                </Button>
+                            ))}
+                        </div>
+                    </FloatUp>
                 </div>
             </section>
         </main>

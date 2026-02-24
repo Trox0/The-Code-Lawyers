@@ -3,6 +3,7 @@ export interface ProjectSection {
     summary: string
     content: string[]
     bullets: string[]
+    highlights?: string[]
 }
 
 export interface ProjectData {
@@ -38,6 +39,7 @@ export const projectsData: ProjectData[] = [
                 "Real-time dashboards give staff instant visibility into student activities",
                 "Automated notifications route issues to the right staff within seconds"
             ],
+            highlights: ["40+ hours saved weekly", "85% reduction", "real-time dashboards", "WebSocket"],
         },
         architecture: {
             title: "System Design",
@@ -53,6 +55,7 @@ export const projectsData: ProjectData[] = [
                 "Real-time WebSocket connections update all connected clients within 100ms",
                 "Scalable NoSQL data model adapts to changing institutional requirements"
             ],
+            highlights: ["React Native", "Couchbase", "offline-first", "100ms updates"],
         },
         stack: {
             title: "Technology Stack",
@@ -69,6 +72,7 @@ export const projectsData: ProjectData[] = [
                 "Docker containerizes the backend for consistent deployment across environments",
                 "GitHub Actions CI/CD pipeline runs tests and deploys to staging automatically"
             ],
+            highlights: ["React Native", "Node.js", "TypeScript", "Docker"],
         },
     },
     {
@@ -91,6 +95,7 @@ export const projectsData: ProjectData[] = [
                 "Smart contract escrow releases funds only when verified milestones are met",
                 "Instant settlements eliminate payment delays and provide full transaction transparency"
             ],
+            highlights: ["3% fees", "smart contract escrow", "instant settlements", "blockchain"],
         },
         architecture: {
             title: "System Design",
@@ -106,6 +111,7 @@ export const projectsData: ProjectData[] = [
                 "Automated fund distribution releases money only when milestone conditions are verified",
                 "Real-time on-chain tracking lets backers monitor campaign progress and fund movements"
             ],
+            highlights: ["Solidity", "ethers.js", "IPFS", "MetaMask"],
         },
         stack: {
             title: "Technology Stack",
@@ -121,6 +127,7 @@ export const projectsData: ProjectData[] = [
                 "Comprehensive test suites achieve 95% code coverage across all contract paths",
                 "Gas-optimized contract functions reduce transaction costs for users"
             ],
+            highlights: ["Solidity", "Hardhat", "OpenZeppelin", "95% coverage"],
         },
     },
     {
@@ -143,6 +150,7 @@ export const projectsData: ProjectData[] = [
                 "Incident response time dropped from 4+ hours to under 15 minutes",
                 "Automated rollback triggers within 30 seconds of detecting failures"
             ],
+            highlights: ["90% reduction", "15 minute response", "automated rollback", "60% less incidents"],
         },
         architecture: {
             title: "System Design",
@@ -158,6 +166,7 @@ export const projectsData: ProjectData[] = [
                 "Multi-cloud deployment support runs workloads across AWS, GCP, and Azure simultaneously",
                 "Comprehensive audit logging records every action for compliance and debugging"
             ],
+            highlights: ["n8n orchestration", "Python AI/ML", "multi-cloud", "event-driven"],
         },
         stack: {
             title: "Technology Stack",
@@ -174,6 +183,7 @@ export const projectsData: ProjectData[] = [
                 "50+ pre-built integrations cover the entire DevOps toolchain out of the box",
                 "Custom webhook support enables integration with proprietary internal systems"
             ],
+            highlights: ["n8n", "Python", "Kubernetes", "Prometheus + Grafana"],
         },
     },
 ]

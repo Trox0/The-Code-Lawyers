@@ -27,6 +27,7 @@ export interface ServiceData {
     techStack: string[]
     deliverables: string[]
     highlighted?: boolean
+    highlights?: string[]
 }
 
 export const servicesData: ServiceData[] = [
@@ -45,6 +46,7 @@ export const servicesData: ServiceData[] = [
             "Startup launching an MVP web app with auth, payments, and a user dashboard"
         ],
         philosophy: "Every website we ship is written in code we own, test, and maintain. No page builders. No black-box plugins. The result is a codebase your team can inspect, extend, and deploy independently.",
+        highlights: ["SOC2-compliant", "mobile-first", "SEO architecture", "Next.js + TypeScript"],
         mindMap: { 
             label: "Websites & Web Apps", 
             children: [
@@ -110,6 +112,7 @@ export const servicesData: ServiceData[] = [
             "Business needing a secure API layer between legacy systems and modern frontends"
         ],
         philosophy: "We treat every system as infrastructure, not a project. That means clean architecture, documented APIs, tested code, and a deployment pipeline.",
+        highlights: ["zero technical debt", "PostgreSQL/MongoDB", "REST/GraphQL APIs", "Docker + AWS"],
         mindMap: { 
             label: "Custom Software Engineering", 
             children: [
@@ -178,6 +181,7 @@ export const servicesData: ServiceData[] = [
             "Agency qualifying leads before routing to a sales rep"
         ],
         philosophy: "A chatbot is only useful if it answers correctly. We train every bot against verified business data and test edge cases before launch.",
+        highlights: ["RAG pipeline", "35% lift in leads", "24/7 instant responses", "CRM integration"],
         mindMap: { 
             label: "AI Chatbots & Assistants", 
             children: [
@@ -242,6 +246,7 @@ export const servicesData: ServiceData[] = [
             "Sales team running outbound qualification at scale"
         ],
         philosophy: "Voice AI is high-stakes. A bad call flow damages trust. We design every conversation path with explicit fallback logic and test against real scenarios.",
+        highlights: ["40% more bookings", "CRM + calendar sync", "natural voice", "ElevenLabs + Twilio"],
         mindMap: { 
             label: "AI Voice & Calling", 
             children: [
@@ -306,6 +311,7 @@ export const servicesData: ServiceData[] = [
             "Operations team replacing a 12-step manual process with a single trigger"
         ],
         philosophy: "Automation without structure creates new problems. Every workflow we build has defined triggers, explicit error states, and logging.",
+        highlights: ["50+ tool integrations", "event-driven triggers", "full audit logging", "n8n / Make"],
         mindMap: { 
             label: "AI Automation & Workflows", 
             children: [
@@ -370,6 +376,7 @@ export const servicesData: ServiceData[] = [
             "Enterprise adding natural-language search across internal knowledge repositories"
         ],
         philosophy: "LLMs are powerful but unpredictable. We treat every integration as a systems engineering problem with defined inputs, tested outputs, cost monitoring, and fallback behavior.",
+        highlights: ["fine-tuned LLMs", "RAG pipelines", "SOC2-compliant", "vector search"],
         mindMap: { 
             label: "Custom LLM Integration", 
             children: [
