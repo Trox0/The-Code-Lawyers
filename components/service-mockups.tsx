@@ -60,8 +60,8 @@ export function ServiceMockups({ forceHover }: { forceHover?: boolean }) {
                 aria-hidden="true"
             >
                 <div className={`relative w-[140px] md:w-[160px] lg:w-[180px] xl:w-[220px] transition-all duration-500 ${forceHover
-                        ? "transform rotate-[6deg] scale-105"
-                        : "transform rotate-[10deg] hover:rotate-[6deg] hover:scale-105"
+                    ? "transform rotate-[6deg] scale-105"
+                    : "transform rotate-[10deg] hover:rotate-[6deg] hover:scale-105"
                     }`}>
                     {/* Phone Frame */}
                     <div className="relative bg-slate-900 rounded-[2.5rem] p-3 shadow-[0_20px_60px_rgba(139,92,246,0.5)]">
@@ -103,13 +103,13 @@ export function ServiceMockups({ forceHover }: { forceHover?: boolean }) {
                 </div>
             </div>
 
-            {/* Automation Dashboard - Background */}
+            {/* Automation Dashboard - Background - Simplified for mobile */}
             <div
-                className={`absolute inset-0 z-5 flex items-center justify-center transition-opacity duration-1500 ${mounted ? "opacity-20" : "opacity-0"
+                className={`absolute inset-0 z-5 flex items-center justify-center transition-opacity duration-1500 ${mounted ? "opacity-10 md:opacity-20" : "opacity-0"
                     }`}
                 aria-hidden="true"
             >
-                <div className="relative w-[85%] max-w-5xl">
+                <div className="relative w-[85%] max-w-5xl hidden md:block">
                     {/* Dashboard Grid */}
                     <div className="grid grid-cols-3 gap-4 p-6 blur-sm">
                         {/* Graph/Chart Panels */}

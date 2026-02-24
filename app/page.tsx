@@ -16,7 +16,7 @@ import { AnimatedRocket } from "@/components/animated-rocket"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background relative">
+    <main className="min-h-screen bg-background relative overflow-x-hidden">
       <LazyBackgrounds />
       <AnimatedRocket />
       <Header />

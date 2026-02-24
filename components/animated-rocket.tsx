@@ -16,24 +16,42 @@ export function AnimatedRocket() {
             const scrollY = window.scrollY
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight
             const progress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0
-            return progress * (window.innerHeight - 100)
+            // Improved range: ensures rocket starts and ends within viewable area
+            const availableHeight = window.innerHeight - 180
+            return progress * availableHeight
         }
 
         // Continuous lerp loop — runs every frame for buttery smooth movement
         const animate = () => {
             if (!running) return
             targetY = getTargetY()
-            // Ease toward target: 0.12 = smooth but responsive
-            currentY += (targetY - currentY) * 0.18
-            if (rocketRef.current) {
-                rocketRef.current.style.transform = `translate3d(0, ${currentY}px, 0) rotate(180deg)`
+
+            // Calculate delta
+            const delta = targetY - currentY
+
+            // Ease toward target: 0.18 = smooth but responsive
+            // If delta is extremely small, just snap to avoid micro-calc overhead
+            if (Math.abs(delta) < 0.01) {
+                currentY = targetY
+            } else {
+                currentY += delta * 0.18
             }
+
+            if (rocketRef.current) {
+                // translate3d forces hardware acceleration
+                // Added a slight tilt based on velocity for more "alive" feel
+                const tilt = Math.max(-5, Math.min(5, delta * 0.2))
+                rocketRef.current.style.transform = `translate3d(0, ${currentY}px, 0) rotate(${180 + tilt}deg)`
+            }
+
             rafId = requestAnimationFrame(animate)
         }
 
-        // Seed initial position
-        currentY = getTargetY()
-        targetY = currentY
+        // Seed initial position immediately
+        targetY = getTargetY()
+        currentY = targetY
+
+        // Start animation loop
         rafId = requestAnimationFrame(animate)
 
         return () => {
@@ -69,10 +87,10 @@ export function AnimatedRocket() {
     return (
         <div
             ref={rocketRef}
-            className={`fixed right-4 md:right-8 z-[100] origin-center md:pointer-events-none ${isDragging ? 'scale-90' : 'scale-75 md:scale-100'
+            className={`fixed right-4 md:right-8 z-[100] origin-center md:pointer-events-none transition-transform duration-300 ${isDragging ? 'scale-90' : 'scale-75 md:scale-100'
                 }`}
             style={{
-                top: '80px', // Start below header
+                top: '100px', // Adjusted start position to avoid header cut-out
                 willChange: 'transform',
             }}
             onTouchStart={handleTouchStart}
@@ -82,7 +100,7 @@ export function AnimatedRocket() {
             aria-label="Scroll indicator - drag to navigate on mobile"
         >
             <div className="relative">
-                {/* Rocket SVG */}
+                {/* Rocket SVG - optimized with simpler paths/defs */}
                 <svg width="40" height="80" viewBox="0 0 40 80">
                     {/* Rocket flame */}
                     <ellipse cx="20" cy="75" rx="6" ry="10" fill="url(#flameGradient)" className="animate-pulse" />
@@ -130,11 +148,12 @@ export function AnimatedRocket() {
                     </defs>
                 </svg>
 
-                {/* Engine glow */}
+                {/* Engine glow - simplified for mobile (no blur filter if possible, or very subtle) */}
                 <div
-                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-12 rounded-full blur-sm"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-12 rounded-full"
                     style={{
-                        background: "linear-gradient(to bottom, rgba(251,146,60,0.6), rgba(239,68,68,0.4), transparent)",
+                        background: "radial-gradient(circle at center, rgba(251,146,60,0.4), transparent 70%)",
+                        boxShadow: "0 0 15px rgba(251,146,60,0.3)",
                     }}
                 />
             </div>
