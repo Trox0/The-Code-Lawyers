@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from "react"
 
 const reasons = [
   { text: "Clean, Bug-Free Code", gradient: "from-blue-500 to-purple-500" },
-  { text: "AI You Can Understand & Trust", gradient: "from-purple-500 to-pink-500" },
-  { text: "Built-In Security", gradient: "from-cyan-500 to-blue-500" },
-  { text: "Ethical AI Practices", gradient: "from-violet-500 to-purple-500" },
-  { text: "Systems That Grow With You", gradient: "from-indigo-500 to-cyan-500" },
+  { text: "AI Addons with Easy Explainability", gradient: "from-purple-500 to-pink-500" },
+  { text: "Safety Guard Rails", gradient: "from-cyan-500 to-blue-500" },
+  { text: "Compliance Ready Software", gradient: "from-violet-500 to-purple-500" },
+  { text: "Scalable Codebase Infrastructure", gradient: "from-indigo-500 to-cyan-500" },
 ]
 
 export function WhyUsSection() {
