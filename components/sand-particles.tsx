@@ -30,7 +30,7 @@ export function SandParticles() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext("2d")
+    const ctx = canvas.getContext("2d", { alpha: true })
     if (!ctx) return
 
     const resizeCanvas = () => {
@@ -40,7 +40,10 @@ export function SandParticles() {
     }
 
     const initParticles = () => {
-      const particleCount = Math.floor((canvas.width * canvas.height) / 3000) // Slightly more particles
+      // Fewer particles on mobile for better performance
+      const isMobile = window.innerWidth < 768
+      const divisor = isMobile ? 6000 : 3000
+      const particleCount = Math.floor((canvas.width * canvas.height) / divisor)
       particlesRef.current = []
 
       for (let i = 0; i < particleCount; i++) {
@@ -71,6 +74,12 @@ export function SandParticles() {
     }
 
     const animate = () => {
+      // Pause rendering when tab is hidden to save resources
+      if (document.hidden) {
+        animationRef.current = requestAnimationFrame(animate)
+        return
+      }
+
       const canvas = canvasRef.current
       if (!canvas) return
 
@@ -78,23 +87,34 @@ export function SandParticles() {
       if (!ctx) return
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
+
       // Increment time for continuous motion
       timeRef.current += 1
 
-      particlesRef.current.forEach((particle) => {
-        // Automatic continuous drift motion (slow orbital/wave motion)
-        const driftX = Math.sin(timeRef.current * particle.driftSpeed + particle.driftPhase) * 0.4
-        const driftY = Math.cos(timeRef.current * particle.driftSpeed * 0.7 + particle.driftPhase) * 0.3
-        
-        // Calculate distance from mouse
-        const dx = mouseRef.current.x - particle.x
-        const dy = mouseRef.current.y - particle.y
-        const distance = Math.sqrt(dx * dx + dy * dy)
-        const maxDistance = 150
+      const particles = particlesRef.current
+      const mouseX = mouseRef.current.x
+      const mouseY = mouseRef.current.y
+      const time = timeRef.current
+      const cw = canvas.width
+      const ch = canvas.height
 
-        // Parallax push effect from mouse
-        if (distance < maxDistance) {
+      for (let i = 0, len = particles.length; i < len; i++) {
+        const particle = particles[i]
+
+        // Automatic continuous drift motion (slow orbital/wave motion)
+        const driftX = Math.sin(time * particle.driftSpeed + particle.driftPhase) * 0.4
+        const driftY = Math.cos(time * particle.driftSpeed * 0.7 + particle.driftPhase) * 0.3
+
+        // Calculate distance from mouse
+        const dx = mouseX - particle.x
+        const dy = mouseY - particle.y
+        const distSq = dx * dx + dy * dy
+        const maxDistance = 150
+        const maxDistSq = maxDistance * maxDistance
+
+        // Parallax push effect from mouse (use squared distance to avoid sqrt)
+        if (distSq < maxDistSq) {
+          const distance = Math.sqrt(distSq)
           const force = (maxDistance - distance) / maxDistance
           const angle = Math.atan2(dy, dx)
           particle.x -= Math.cos(angle) * force * 3
@@ -114,18 +134,18 @@ export function SandParticles() {
         particle.y += (particle.baseY - particle.y) * 0.005
 
         // Subtle twinkle effect
-        particle.opacity = particle.baseOpacity + Math.sin(timeRef.current * particle.twinkleSpeed) * 0.15
+        particle.opacity = particle.baseOpacity + Math.sin(time * particle.twinkleSpeed) * 0.15
 
         // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width
-        if (particle.x > canvas.width) particle.x = 0
-        if (particle.y < 0) particle.y = canvas.height
-        if (particle.y > canvas.height) particle.y = 0
+        if (particle.x < 0) particle.x = cw
+        if (particle.x > cw) particle.x = 0
+        if (particle.y < 0) particle.y = ch
+        if (particle.y > ch) particle.y = 0
 
         // Draw particle with subtle glow
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        
+
         // Add subtle purple tint to some particles
         const isPurple = particle.driftPhase > Math.PI * 1.5
         if (isPurple) {
@@ -134,14 +154,14 @@ export function SandParticles() {
           ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`
         }
         ctx.fill()
-      })
+      }
 
       animationRef.current = requestAnimationFrame(animate)
     }
 
     resizeCanvas()
     window.addEventListener("resize", resizeCanvas)
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
     animate()
 
     return () => {

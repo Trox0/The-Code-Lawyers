@@ -24,7 +24,7 @@ export function AnimatedRocket() {
             if (!running) return
             targetY = getTargetY()
             // Ease toward target: 0.12 = smooth but responsive
-            currentY += (targetY - currentY) * 0.12
+            currentY += (targetY - currentY) * 0.18
             if (rocketRef.current) {
                 rocketRef.current.style.transform = `translate3d(0, ${currentY}px, 0) rotate(180deg)`
             }
