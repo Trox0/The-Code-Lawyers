@@ -48,7 +48,7 @@ export function WhyUsSection() {
               <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">us</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              We build software that works reliably, handles growth, and gives you a competitive edge — without cutting corners.
+              We build software that works reliably, handles growth, and gives you a competitive edge, without cutting corners.
             </p>
           </div>
 
