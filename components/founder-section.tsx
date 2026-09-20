@@ -44,8 +44,21 @@ export function FounderSection() {
           An <span className="text-purple-400 font-medium">SDE1</span> with 3.5 years of experience, bringing strong technical expertise from <span className="text-purple-400 font-medium">Mumbai</span>.
         </>
       )
+    },
+    {
+      name: "Raunak Sadhwani",
+      role: "Co-Founder & Senior AI Software Engineer",
+      image: "/images/raunak-sadhwani.jpg",
+      bio: (
+        <>
+          Over 2 years of <span className="text-purple-400 font-medium">international experience in Germany</span> combined with 3 years of <span className="text-purple-400 font-medium">development expertise</span>.
+        </>
+      )
     }
   ]
+
+  const topFounder = founders[0]
+  const bottomFounders = founders.slice(1)
 
   const FounderCard = ({ founder, index, isVertical = false }: { founder: typeof founders[0], index: number, isVertical?: boolean }) => (
     <div
@@ -151,16 +164,24 @@ export function FounderSection() {
           <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Meet the Founders</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-            {founders.map((founder, idx) => (
+        <div className="flex flex-col items-center gap-6">
+          <div className={`w-full transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <FounderCard founder={topFounder} index={0} />
+          </div>
+
+          <div className="w-px h-6 bg-gradient-to-b from-purple-500/50 to-purple-500/20" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {bottomFounders.map((founder, idx) => (
               <div
                 key={founder.name}
                 className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                style={{ transitionDelay: `${idx * 200}ms` }}
+                style={{ transitionDelay: `${(idx + 1) * 200}ms` }}
               >
-                <FounderCard founder={founder} index={idx} isVertical={true} />
+                <FounderCard founder={founder} index={idx + 1} isVertical={true} />
               </div>
             ))}
+          </div>
         </div>
       </div>
     </section>
