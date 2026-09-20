@@ -40,7 +40,7 @@ The GitHub `main` branch deploys automatically to [thecodelawyers.com](https://t
 
 ## Lamp interactive experience
 
-The homepage introduces Lamp: a Three.js particle portrait with the sculpted loc hairstyle, cursor/touch tracking, a particle pulse, and a native scroll sequence that zooms and brightens before blending into the AI/automation section. Nine local tool masks surround it in two responsive arcs: n8n, ChatGPT, Claude, Gemini, Zapier, Make, LangChain, OpenClaw, and Hermes.
+The homepage introduces Lamp: a Three.js particle portrait with the short straight bob and athletic adult feminine portrait, cursor/touch tracking, a particle pulse, and a native scroll sequence that zooms and brightens before blending into the AI/automation section. Nine local tool masks surround it in two responsive arcs: n8n, ChatGPT, Claude, Gemini, Zapier, Make, LangChain, OpenClaw, and Hermes.
 
 - `components/hero-section.tsx` manages first-frame readiness, the estimated loading indicator, motion preferences, retries, and scroll choreography.
 - `lib/lamp-scene.js` owns the WebGL resources; every mount can be aborted and disposed. `lib/lamp-assets.js` retries transient asset failures three times.
