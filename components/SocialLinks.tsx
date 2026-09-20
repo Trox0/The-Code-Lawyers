@@ -14,7 +14,7 @@ export default function SocialLinks() {
       </Link>
 
       <Link
-        href="mailto:yashwant@thecodelawyers.com"
+        href="mailto:team@thecodelawyers.com"
         aria-label="Email"
         className="hover:text-blue-500 transition-colors"
       >

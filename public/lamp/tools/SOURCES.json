@@ -1,0 +1,49 @@
+[
+  {
+    "name": "n8n",
+    "source": "https://github.com/simple-icons/simple-icons/blob/develop/icons/n8n.svg",
+    "modification": "Converted visible fills and strokes to white for particle masks; brand geometry retained."
+  },
+  {
+    "name": "openai",
+    "source": "https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/openai.svg",
+    "modification": "Converted visible fills and strokes to white for particle masks; brand geometry retained."
+  },
+  {
+    "name": "claude",
+    "source": "https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/claude.svg",
+    "modification": "Converted visible fills and strokes to white for particle masks; brand geometry retained."
+  },
+  {
+    "name": "gemini",
+    "source": "https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/gemini.svg",
+    "modification": "Converted visible fills and strokes to white for particle masks; brand geometry retained."
+  },
+  {
+    "name": "zapier",
+    "source": "https://github.com/simple-icons/simple-icons/blob/9.0.0/icons/zapier.svg",
+    "modification": "Historical standalone Zapier asterisk mark from Simple Icons v9.0.0. White fill used for particle mask; original geometry retained."
+  },
+  {
+    "name": "make",
+    "source": "https://github.com/simple-icons/simple-icons/blob/develop/icons/make.svg",
+    "modification": "Converted visible fills and strokes to white for particle masks; brand geometry retained."
+  },
+  {
+    "name": "langchain",
+    "source": "https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/langchain.svg",
+    "modification": "Converted visible fills and strokes to white for particle masks; brand geometry retained."
+  },
+  {
+    "name": "openclaw",
+    "source": "https://github.com/openclaw/openclaw/blob/main/apps/linux/src-tauri/icons/icon.svg",
+    "modification": "Official OpenClaw lobster mascot. Body and strokes converted to white for the particle mask; dark eyes retained as cutouts.",
+    "license": "https://github.com/openclaw/openclaw/blob/main/LICENSE"
+  },
+  {
+    "name": "hermes",
+    "source": "https://github.com/NousResearch/hermes-agent/blob/main/website/static/img/favicon.svg",
+    "modification": "Official Nous Research Hermes Agent caduceus favicon. Text fill changed to white for the particle mask; symbol font fallback specified.",
+    "license": "https://github.com/NousResearch/hermes-agent/blob/main/LICENSE"
+  }
+]

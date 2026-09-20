@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
               If you have questions about this Privacy Policy, please contact us at:
             </p>
             <p className="text-purple-400 mt-2">
-              Email: contact@thecodelawyers.com<br />
+              Email: team@thecodelawyers.com<br />
               Phone: +91 8454055228
             </p>
           </section>

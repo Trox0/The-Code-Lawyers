@@ -33,10 +33,16 @@ export function Footer() {
             <p className="text-sm text-muted-foreground mt-1">
               © {currentYear} The Code Lawyers. All rights reserved.
             </p>
+            <a
+              href="mailto:team@thecodelawyers.com"
+              className="inline-block mt-3 text-sm text-foreground hover:text-purple-400 transition-colors"
+            >
+              team@thecodelawyers.com
+            </a>
             {/* Hidden contact info for SEO */}
             <div className="sr-only" itemProp="contactPoint" itemScope itemType="https://schema.org/ContactPoint">
               <span itemProp="telephone">+91-8454055228</span>
-              <span itemProp="email">yashwant@thecodelawyers.com</span>
+              <span itemProp="email">team@thecodelawyers.com</span>
               <span itemProp="contactType">customer service</span>
             </div>
           </div>
@@ -47,21 +53,21 @@ export function Footer() {
             aria-label="Footer navigation"
           >
             <Link
-              href="#services"
+              href="/#services"
               className="text-sm text-muted-foreground hover:text-purple-400 transition-colors"
               aria-label="Our Services"
             >
               Services
             </Link>
             <Link
-              href="#work"
+              href="/#work"
               className="text-sm text-muted-foreground hover:text-purple-400 transition-colors"
               aria-label="Our Work and Portfolio"
             >
               Portfolio
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
               className="text-sm text-muted-foreground hover:text-purple-400 transition-colors"
               aria-label="Contact Us"
             >
@@ -89,6 +95,7 @@ export function Footer() {
             >
               Disclaimer
             </Link>
+            <a href="/lamp/credits.html" className="text-sm text-muted-foreground hover:text-foreground transition-colors">3D credits</a>
           </nav>
 
           {/* Social Icons */}

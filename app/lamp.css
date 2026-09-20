@@ -1,0 +1,109 @@
+/* Clip overflow without creating a scrolling ancestor for the sticky scene. */
+html, body { overflow-x: clip !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+.lamp-site { --lamp-bg: #050608; --lamp-violet: #d8ceff; background: var(--lamp-bg); }
+.lamp-site-header { background: transparent !important; border: 0; backdrop-filter: none; }
+.lamp-site-header a { text-shadow: 0 1px 14px #050608; }
+.lamp-site-header:before { content: ""; position: absolute; inset: 0; background: linear-gradient(#05060855, transparent); z-index: -1; pointer-events: none; }
+.lamp-runway { position: relative; height: 220svh; background: var(--lamp-bg); }
+.lamp-hero { --lamp-header-height: 80px; position: sticky; top: 0; height: 100svh; min-height: 540px; isolation: isolate; }
+.lamp-particle-stage { position: absolute; inset: 0; transform-origin: 50% 45%; pointer-events: none; }
+.lamp-particle-stage:after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #050608 0, #050608b0 9%, transparent 28%); pointer-events: none; }
+.lamp-sculpture { position: absolute; inset: 0; }
+.lamp-sculpture canvas { display: block; width: 100%; height: 100%; }
+.lamp-coordinates { position: absolute; z-index: 2; left: 4.5%; top: calc(var(--lamp-header-height) + 27px); font-size: 10px; line-height: 1.9; text-transform: uppercase; letter-spacing: .18em; color: #b7b2c8; }
+.lamp-portrait-controls { position: absolute; z-index: 3; top: calc(var(--lamp-header-height) + 19px); right: 4.5%; display: flex; gap: 8px; }
+.lamp-portrait-controls button { display: inline-flex; align-items: center; gap: 10px; border: 1px solid #e5daff2a; border-radius: 40px; padding: 12px 17px; background: #0d0d1677; color: #d0cbdf; font-size: 11px; backdrop-filter: blur(6px); cursor: pointer; transition: border-color .25s, background .25s; }
+.lamp-portrait-controls button:hover { border-color: #c4b1ff99; background: #292134aa; }
+.lamp-portrait-controls button:disabled { opacity: .4; cursor: default; }
+.lamp-intro-content { position: absolute; z-index: 2; bottom: 27px; left: 4.5%; right: 4.5%; }
+.lamp-kicker { color: #d2cddd; font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+.lamp-intro-row { display: flex; align-items: center; gap: 32px; margin: 22px 0 36px; }
+.lamp-intro-row h1 { font-size: clamp(58px, 6.7vw, 116px); letter-spacing: -.065em; font-weight: 400; line-height: 1.08; color: #f8f7fc; white-space: nowrap; }
+.lamp-intro-row h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; color: var(--lamp-violet); letter-spacing: -.055em; }
+.lamp-white-button { display: inline-flex; align-items: center; justify-content: space-between; flex-shrink: 0; gap: 30px; padding: 22px 27px; border-radius: 14px; color: #111015; background: #faf9ff; font-size: 15px; transition: transform .25s, background .25s; }
+.lamp-white-button:hover { background: #e0d6ff; transform: translateY(-3px); }
+.lamp-intro-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #b3aec0; font-size: 12px; }
+.lamp-intro-bottom a { display: inline-flex; align-items: center; gap: 18px; }
+.lamp-intro-bottom a:hover { color: #f5f0ff; }
+.lamp-site :focus-visible { outline: 2px solid #cfc0ff; outline-offset: 6px; }
+.lamp-site > #lamp-approach { position: relative; margin-top: -1px; background: #050608; }
+.lamp-site > #lamp-approach > * { opacity: calc(.2 + var(--lamp-entrance, 1) * .8); transform: translateY(calc((1 - var(--lamp-entrance, 1)) * 40px)); }
+.lamp-site > #services { background: linear-gradient(#050608, #09080e 230px); padding-top: clamp(90px, 10vw, 160px); }
+.lamp-site > section:not(.lamp-hero) { scroll-margin-top: 60px; }
+.lamp-fallback { position: absolute; inset: 0; opacity: 0; transition: opacity .7s; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at center, #251b40 0, #050608 65%); }
+.lamp-fallback[data-visible=true] { opacity: 1; }
+.lamp-fallback-mark { width: min(42vw, 360px); aspect-ratio: 1; border: 1px solid #c5adff55; border-radius: 50%; box-shadow: 0 0 100px #aa80ff26, inset 0 0 80px #aa80ff16; display: grid; place-items: center; }
+.lamp-fallback-mark span { font: italic clamp(100px, 19vw, 250px)/1 Georgia, serif; color: #d9ccff; text-shadow: 0 0 40px #b492ff88; }
+.lamp-fallback-tools { position: absolute; inset: 15% 7%; display: flex; gap: 14px; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+.lamp-fallback-tools span { border: 1px solid #b8a5ee3b; border-radius: 50px; padding: 7px 12px; color: #c4b5df; font-size: 10px; }
+.lamp-loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #050608; opacity: 1; visibility: visible; transition: opacity .65s ease, visibility .65s; touch-action: none; }
+.lamp-loader[data-loading=false] { opacity: 0; visibility: hidden; pointer-events: none; }
+html.lamp-loading, html.lamp-loading body, body:has(.lamp-loader[data-loading=true]) { overflow-y: hidden !important; }
+.lamp-loader-inner { width: min(360px, calc(100% - 64px)); text-align: center; }
+.lamp-loader-inner > .lamp-kicker { font-size: 10px; letter-spacing: .25em; }
+.lamp-loader-inner h2 { color: #f5f1ff; font-size: 27px; font-weight: 400; letter-spacing: -.035em; }
+.lamp-loader-inner h2 em { font-family: Georgia, serif; color: #d4c3ff; }
+.lamp-loader-inner p { margin: 12px 0 50px; font-size: 11px; color: #a69cb8; }
+.lamp-loader-orbit { position: relative; width: 125px; height: 125px; margin: 60px auto 45px; display: grid; place-items: center; }
+.lamp-loader-orbit span { font: italic 56px Georgia, serif; color: #d7caff; }
+.lamp-loader-orbit i { position: absolute; inset: 0; border: 1px solid #c4a2ff38; border-top-color: #d7baff; border-radius: 50%; animation: lamp-orbit 5s linear infinite; }
+.lamp-loader-orbit i:nth-child(2) { inset: 10px; animation-direction: reverse; animation-duration: 7s; }
+.lamp-loader-orbit i:nth-child(3) { inset: -11px; border-color: #b59be415; animation: lamp-breathe 2.5s ease-in-out infinite alternate; }
+.lamp-progress-line { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 10px; color: #bfb3d6; font-variant-numeric: tabular-nums; }
+.lamp-loader progress { appearance: none; display: block; width: 100%; height: 2px; border: 0; border-radius: 2px; background: #241d30; color: #d7c1ff; overflow: hidden; }
+.lamp-loader progress::-webkit-progress-bar { background: #241d30; }
+.lamp-loader progress::-webkit-progress-value { background: linear-gradient(90deg,#7654aa,#e9d8ff); }
+.lamp-loader progress::-moz-progress-bar { background: #d7c1ff; }
+@keyframes lamp-orbit { to { transform: rotate(360deg); } }
+@keyframes lamp-breathe { to { transform: scale(1.12); opacity: .3; } }
+html.lamp-motion-paused *, html.lamp-motion-paused *:before, html.lamp-motion-paused *:after { animation-play-state: paused !important; }
+@media (min-width: 1800px) { .lamp-intro-content { bottom: 36px; }.lamp-intro-row { margin-bottom: 46px; } }
+@media (max-width: 1023px) {
+  .lamp-particle-stage { top: calc(var(--lamp-header-height) + 50px); bottom: 145px; }
+  .lamp-intro-row { gap: 22px; margin-bottom: 27px; }
+  .lamp-intro-row h1 { font-size: clamp(50px, 7.7vw, 78px); }
+  .lamp-white-button { padding: 18px 21px; font-size: 13px; gap: 24px; }
+  .lamp-coordinates { font-size: 9px; }
+  .lamp-portrait-controls button { font-size: 10px; padding: 10px 12px; }
+}
+@media (max-width: 600px) {
+  .lamp-hero { min-height: 590px; }
+  .lamp-particle-stage { bottom: 203px; }
+  .lamp-coordinates { display: none; }
+  .lamp-portrait-controls { left: 5%; right: 5%; justify-content: space-between; top: calc(var(--lamp-header-height) + 12px); }
+  .lamp-portrait-controls button { font-size: 9px; gap: 6px; padding: 9px 11px; }
+  .lamp-intro-content { left: 6%; right: 6%; bottom: 25px; }
+  .lamp-kicker { font-size: 8px; letter-spacing: .055em; }
+  .lamp-intro-row { flex-wrap: wrap; gap: 19px; margin: 17px 0 22px; }
+  .lamp-intro-row h1 { font-size: clamp(40px, 9.8vw, 58px); }
+  .lamp-white-button { padding: 13px 20px; border-radius: 10px; font-size: 12px; gap: 32px; }
+  .lamp-white-button svg { width: 18px; height: 18px; }
+  .lamp-intro-bottom { font-size: 9px; gap: 18px; }
+  .lamp-intro-bottom p { max-width: 140px; }
+  .lamp-intro-bottom a { max-width: 130px; gap: 7px; }
+  .lamp-fallback-tools { inset: 5% 4%; gap: 6px; }
+  .lamp-fallback-tools span { font-size: 8px; padding: 4px 7px; }
+}
+@media (max-width: 359px) {
+  .lamp-portrait-controls button { font-size: 8px; padding: 8px; }
+  .lamp-intro-row h1 { font-size: 37px; }
+  .lamp-intro-bottom { font-size: 8px; }
+}
+@media (max-height: 650px) and (min-width: 601px) {
+  .lamp-hero { min-height: 350px; }
+  .lamp-coordinates { display: none; }
+  .lamp-particle-stage { bottom: 50px; }
+  .lamp-intro-content { bottom: 16px; }
+  .lamp-intro-row { margin: 10px 0 14px; }
+  .lamp-intro-row h1 { font-size: 55px; }
+  .lamp-intro-bottom { font-size: 10px; }
+  .lamp-white-button { padding: 14px 21px; }
+  .lamp-portrait-controls { top: calc(var(--lamp-header-height) + 5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lamp-runway { height: auto; }
+  .lamp-hero { position: relative; }
+  .lamp-site > #lamp-approach > * { opacity: 1; transform: none; }
+}

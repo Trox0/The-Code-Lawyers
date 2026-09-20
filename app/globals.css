@@ -97,7 +97,7 @@
   }
 }
 
-/* Scroll is handled by Lenis — do NOT set scroll-behavior: smooth here */
+/* Use native scrolling so touch and the pinned Lamp sequence share one scroller. */
 html {
   overscroll-behavior: none;
 }

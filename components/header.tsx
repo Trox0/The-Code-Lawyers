@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -9,6 +9,27 @@ import SocialLinks from "./SocialLinks"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+    const desktop = window.matchMedia("(min-width: 1024px)")
+    const onResize = () => {
+      if (desktop.matches) setIsMenuOpen(false)
+    }
+    document.addEventListener("keydown", onKeyDown)
+    desktop.addEventListener("change", onResize)
+    return () => {
+      document.removeEventListener("keydown", onKeyDown)
+      desktop.removeEventListener("change", onResize)
+    }
+  }, [isMenuOpen])
 
   const navLinks = [
     { href: "#services", label: "Services", ariaLabel: "View our services" },
@@ -19,12 +40,13 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
+      className="lamp-site-header fixed top-0 left-0 right-0 z-50 bg-transparent"
+      data-menu-open={isMenuOpen}
       itemScope
       itemType="https://schema.org/WPHeader"
       role="banner"
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-[1920px] mx-auto px-5 sm:px-8 lg:px-12 py-4">
         <nav
           className="flex items-center justify-between"
           aria-label="Main navigation"
@@ -33,7 +55,8 @@ export function Header() {
           {/* Logo/Brand - Important for SEO */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-base md:text-xl font-semibold tracking-tight text-foreground hover:text-purple-400 transition-colors"
+            className="flex min-w-0 items-center gap-2 text-sm sm:text-base lg:text-xl font-semibold tracking-tight text-foreground hover:text-purple-400 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
             aria-label="The Code Lawyers - Home"
             itemProp="url"
           >
@@ -42,7 +65,7 @@ export function Header() {
               alt="The Code Lawyers Logo"
               width={40}
               height={40}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-md"
+              className="w-10 h-10 lg:w-12 lg:h-12 shrink-0 rounded-md"
               priority
             />
             <span
@@ -50,13 +73,11 @@ export function Header() {
               className="relative"
             >
               The Code Lawyers
-              {/* Invisible text for additional SEO keywords */}
-              <span className="sr-only"> - Premier Software Engineering & AI Solutions Company</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -70,7 +91,7 @@ export function Header() {
               </Link>
             ))}
 
-            <div className="border-l border-border pl-6" aria-label="Social media links">
+            <div className="hidden xl:block border-l border-border pl-6" aria-label="Social media links">
               <SocialLinks />
             </div>
 
@@ -79,7 +100,9 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground p-2 hover:bg-muted rounded-lg transition-colors"
+            ref={menuButtonRef}
+            type="button"
+            className="lg:hidden text-foreground p-3 hover:bg-muted rounded-lg transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
@@ -93,7 +116,7 @@ export function Header() {
         {isMenuOpen && (
           <nav
             id="mobile-navigation"
-            className="md:hidden py-4 border-t border-border mt-4"
+            className="lamp-mobile-navigation lg:hidden py-4 px-5 border border-white/10 rounded-2xl mt-4 bg-[#08070d]/95 backdrop-blur-xl shadow-2xl max-h-[calc(100svh-100px)] overflow-y-auto"
             aria-label="Mobile navigation"
           >
             <div className="flex flex-col gap-4">

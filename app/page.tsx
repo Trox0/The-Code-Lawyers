@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { LampApproach } from "@/components/lamp-approach"
+import "./lamp.css"
 
 const ServicesSection = dynamic(() => import("@/components/services-section").then(mod => mod.ServicesSection))
 const ProjectsSection = dynamic(() => import("@/components/projects-section").then(mod => mod.ProjectsSection))
@@ -10,17 +12,14 @@ const FounderSection = dynamic(() => import("@/components/founder-section").then
 const ContactSection = dynamic(() => import("@/components/contact-section").then(mod => mod.ContactSection))
 
 const Footer = dynamic(() => import("@/components/footer").then(mod => mod.Footer))
-import { LazyBackgrounds } from "@/components/lazy-backgrounds"
-import { AnimatedRocket } from "@/components/animated-rocket"
 
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background relative overflow-x-hidden">
-      <LazyBackgrounds />
-      <AnimatedRocket />
+    <main className="lamp-site min-h-screen bg-background relative">
       <Header />
       <HeroSection />
+      <LampApproach />
       <ServicesSection />
       <ProjectsSection />
       <SocialProofSection />

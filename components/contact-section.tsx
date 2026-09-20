@@ -137,7 +137,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground font-medium">yashwant@thecodelawyers.com</p>
+                  <a className="text-foreground font-medium break-all hover:text-purple-400 transition-colors" href="mailto:team@thecodelawyers.com">team@thecodelawyers.com</a>
                 </div>
               </div>
             </div>

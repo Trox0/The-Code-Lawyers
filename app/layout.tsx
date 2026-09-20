@@ -91,9 +91,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-    },
   },
 
   // Open Graph - Facebook, LinkedIn, etc.
@@ -161,13 +158,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
 
-  // Verification (add your actual verification codes)
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
-  },
-
   // App links
   appleWebApp: {
     capable: true,
@@ -207,7 +197,7 @@ const jsonLd = {
         "@type": "ContactPoint",
         telephone: "+91-8454055228",
         contactType: "customer service",
-        email: "yashwant@thecodelawyers.com",
+        email: "team@thecodelawyers.com",
         availableLanguage: ["English", "Hindi"],
       },
       sameAs: [
@@ -239,14 +229,6 @@ const jsonLd = {
       description: siteConfig.description,
       publisher: {
         "@id": `${siteConfig.url}/#organization`,
-      },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${siteConfig.url}/search?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
       },
       inLanguage: "en-US",
     },
@@ -366,13 +348,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* Preload critical resources */}
-        <link
-          rel="preload"
-          href="/images/yashwant-pandey.jpeg"
-          as="image"
-          type="image/jpeg"
-        />
       </head>
       <body className="font-sans antialiased overflow-x-hidden">
         <SmoothScrolling>

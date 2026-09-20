@@ -119,7 +119,7 @@ export default function TermsOfService() {
             </p>
             <p className="text-purple-400 mt-2">
               The Code Lawyers<br />
-              Email: contact@thecodelawyers.com<br />
+              Email: team@thecodelawyers.com<br />
               Phone: +91 8454055228
             </p>
           </section>

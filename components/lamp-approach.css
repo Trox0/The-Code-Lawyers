@@ -1,0 +1,126 @@
+.lamp-approach {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  color: #f5f3fb;
+  background: #050608;
+  padding: clamp(6rem, 12vw, 12rem) clamp(1.25rem, 5vw, 6rem) clamp(5rem, 10vw, 10rem);
+  scroll-margin-top: 6rem;
+}
+
+.lamp-approach::before {
+  content: "";
+  position: absolute;
+  inset: -12rem 0 auto;
+  height: 12rem;
+  background: linear-gradient(transparent, #050608);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.lamp-approach-inner { max-width: 1450px; margin: 0 auto; }
+.lamp-approach-intro { max-width: 1200px; }
+.lamp-approach-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 0 0 2rem;
+  color: #beb8d1;
+  font-size: .69rem;
+  font-weight: 500;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+.lamp-approach-eyebrow > span { width: 6px; height: 6px; border-radius: 50%; background: #c5b6ef; box-shadow: 0 0 20px #ae8eef80; }
+.lamp-approach h2 {
+  margin: 0;
+  color: #f7f5fb;
+  font-size: clamp(2.5rem, 6.2vw, 6.7rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.065em;
+  text-wrap: balance;
+}
+.lamp-approach h2 em { color: #c7b9ed; font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.05em; }
+.lamp-approach-summary { margin: 2rem 0 0; color: #aaa6b7; font-size: clamp(.95rem, 1.5vw, 1.13rem); line-height: 1.75; }
+.lamp-approach-grid { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: clamp(2rem, 6vw, 7rem); margin-top: 2rem; }
+.lamp-system-visual { position: relative; min-width: 0; width: 100%; aspect-ratio: 1; }
+.lamp-system-canvas { display: block; width: 100%; height: 100%; }
+.lamp-system-glow { position: absolute; inset: 12%; z-index: -1; background: radial-gradient(ellipse, #a383df12, transparent 65%); border-radius: 50%; }
+.lamp-system-label { position: absolute; color: #898391; font-size: .59rem; letter-spacing: .15em; text-transform: uppercase; transition: color .3s ease; }
+.lamp-system-label.is-active { color: #eee5ff; }
+.lamp-system-label-ai { top: 12%; left: 12%; }
+.lamp-system-label-flow { top: 29%; right: 0; }
+.lamp-system-label-code { bottom: 17%; left: 8%; }
+.lamp-system-caption { position: absolute; bottom: 1%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 1.5rem; color: #918a9e; white-space: nowrap; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; }
+.lamp-system-caption > span { color: #d1c1f4; font-size: 1.2rem; }
+.lamp-approach-explorer { padding-top: 2rem; min-width: 0; }
+.lamp-approach-tabs { border-top: 1px solid #ffffff16; }
+.lamp-approach-tabs > button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1.6rem 1fr 1.2rem;
+  align-items: center;
+  gap: .85rem;
+  padding: 1.3rem .35rem;
+  background: transparent;
+  color: #a6a1b0;
+  border: 0;
+  border-bottom: 1px solid #ffffff16;
+  font: inherit;
+  font-size: clamp(1rem, 1.9vw, 1.48rem);
+  text-align: left;
+  cursor: pointer;
+  transition: color .3s ease, padding .3s ease;
+}
+.lamp-approach-tabs > button:hover { color: #eee7ff; }
+.lamp-approach-tabs > button[aria-selected="true"] { color: #eee7ff; padding-left: .65rem; }
+.lamp-approach-tabs > button[aria-selected="true"] > svg { transform: rotate(-90deg); }
+.lamp-approach-tabs > button > svg { color: #bca8eb; transition: transform .3s ease; }
+.lamp-tab-number { font-family: monospace; font-size: .7rem; color: #857d95; }
+.lamp-approach-panel { padding: 1.85rem .35rem 0; min-height: 250px; animation: lamp-panel-in .45s ease both; }
+.lamp-approach-panel[hidden] { display: none; }
+.lamp-panel-label { margin: 0 0 .85rem; color: #bea9ec; font-size: .62rem; text-transform: uppercase; letter-spacing: .18em; }
+.lamp-approach-panel h3 { margin: 0; font-weight: 450; font-size: clamp(1.1rem, 1.7vw, 1.4rem); line-height: 1.4; letter-spacing: -.025em; }
+.lamp-panel-description { margin: 1rem 0; color: #b0aabb; font-size: .9rem; line-height: 1.8; }
+.lamp-approach-panel ul { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin: 1.35rem 0 0; padding: 0; list-style: none; }
+.lamp-approach-panel li { position: relative; padding-left: .75rem; font-size: .66rem; color: #b2a5ca; }
+.lamp-approach-panel li::before { content: ""; position: absolute; top: .45em; left: 0; width: 3px; height: 3px; border-radius: 50%; background: #ac93dc; }
+.lamp-approach-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 2.1rem; }
+.lamp-approach-actions > a { display: inline-flex; align-items: center; justify-content: center; gap: 1.1rem; min-height: 48px; padding: .85rem 1.15rem; border: 1px solid #c3b0e044; border-radius: 100px; color: #eee7fa; text-decoration: none; font-size: .76rem; transition: background .25s ease, border-color .25s ease; }
+.lamp-approach-actions > a:hover { background: #be9be511; border-color: #c3b0e099; }
+.lamp-approach-actions > a.lamp-approach-secondary { border-color: transparent; padding-inline: 0; color: #aaa1b9; }
+.lamp-approach :is(button, a, [role="tabpanel"]):focus-visible { outline: 2px solid #d6c7fa; outline-offset: 6px; border-radius: 3px; }
+@keyframes lamp-panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (min-width: 1700px) { .lamp-approach-grid { gap: 8rem; } }
+@media (max-width: 900px) {
+  .lamp-approach-grid { grid-template-columns: .9fr 1fr; gap: 2rem; }
+  .lamp-system-visual { aspect-ratio: .85; }
+  .lamp-system-label-flow { right: -2%; top: 20%; }
+  .lamp-system-label-code { bottom: 22%; left: 0; }
+  .lamp-system-label-ai { left: 3%; top: 24%; }
+  .lamp-approach-panel { min-height: 285px; }
+}
+@media (max-width: 640px) {
+  .lamp-approach { padding-top: 5.5rem; padding-bottom: 5rem; }
+  .lamp-approach h2 { font-size: clamp(2.4rem, 8.4vw, 3.8rem); line-height: 1.12; }
+  .lamp-approach-eyebrow { font-size: .58rem; margin-bottom: 1.5rem; }
+  .lamp-approach-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.25rem; }
+  .lamp-system-visual { aspect-ratio: 1.15; width: min(100%, 440px); margin-inline: auto; }
+  .lamp-system-label { font-size: .5rem; letter-spacing: .12em; }
+  .lamp-system-label-ai { top: 12%; left: 4%; }
+  .lamp-system-label-flow { top: 25%; right: 0; }
+  .lamp-system-label-code { bottom: 12%; left: 0; }
+  .lamp-system-caption { bottom: -1%; font-size: .52rem; }
+  .lamp-approach-explorer { padding-top: 1rem; }
+  .lamp-approach-tabs > button { font-size: 1.15rem; padding-block: 1.15rem; }
+  .lamp-approach-panel { min-height: 253px; padding-top: 1.6rem; }
+  .lamp-panel-description { font-size: .85rem; }
+  .lamp-approach-actions { gap: .5rem 1rem; margin-top: 1.7rem; }
+  .lamp-approach-actions > a { font-size: .7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lamp-approach *, .lamp-approach *::before { animation: none !important; transition: none !important; }
+}
+.lamp-motion-paused .lamp-approach *, .lamp-motion-paused .lamp-approach *::before { animation: none !important; transition: none !important; }
