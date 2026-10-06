@@ -134,8 +134,8 @@ export function ServicesSection() {
           >
             What we build for <span className="text-purple-500">businesses</span> like yours
           </h2>
-          <p className="sr-only">
-            The Code Lawyers offers comprehensive software engineering and AI solutions including web development,
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-5 text-base leading-relaxed">
+            The Code Lawyers builds software and AI solutions for businesses in India, including web development,
             custom software, AI chatbots, AI voice bots, automation, and video content services.
           </p>
         </div>

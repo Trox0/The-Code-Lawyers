@@ -47,11 +47,11 @@ export function FounderSection() {
     },
     {
       name: "Raunak Sadhwani",
-      role: "Co-Founder & Senior AI Software Engineer",
+      role: "Co-Founder & President",
       image: "/images/raunak-sadhwani.jpg",
       bio: (
         <>
-          Over 2 years of <span className="text-purple-400 font-medium">international experience in Germany</span> combined with 3 years of <span className="text-purple-400 font-medium">development expertise</span>.
+          Over 2 years of <span className="text-purple-400 font-medium">international experience in Germany</span> combined with 3 years of <span className="text-purple-400 font-medium">development expertise</span>, specialising in <span className="text-purple-400 font-medium">AI systems, secure integrations and business automation</span>.
         </>
       )
     }
@@ -62,7 +62,7 @@ export function FounderSection() {
 
   const FounderCard = ({ founder, index, isVertical = false }: { founder: typeof founders[0], index: number, isVertical?: boolean }) => (
     <div
-      className={`group relative cursor-pointer rounded-3xl p-6 md:p-10 transition-all duration-700 hover:-translate-y-1 hover:shadow-2xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      className={`group relative h-full cursor-pointer rounded-3xl p-6 md:p-10 transition-all duration-700 hover:-translate-y-1 hover:shadow-2xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
         backdropFilter: 'blur(20px)',

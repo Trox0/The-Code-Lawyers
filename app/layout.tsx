@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
   manifest: "/manifest.json",
-  openGraph: { type: "website", locale: "en_US", siteName, title: `${siteName} | Software Engineering & AI Automation`, description: siteDescription,
+  openGraph: { type: "website", locale: "en_IN", siteName, title: `${siteName} | Software Engineering & AI Automation`, description: siteDescription,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "The Code Lawyers — Software engineering & AI automation" }] },
   twitter: { card: "summary_large_image", title: `${siteName} | Software Engineering & AI Automation`, description: siteDescription, images: ["/opengraph-image"] },
 }
@@ -44,12 +44,13 @@ const jsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   description: siteDescription,
+  areaServed: { "@type": "Country", name: "India" },
   email: "team@thecodelawyers.com",
   telephone: "+91-8454055228",
   founder: [
     { "@type": "Person", name: "Yashwant Pandey", jobTitle: "Co-Founder & CEO" },
     { "@type": "Person", name: "Kshitij Sharma", jobTitle: "Co-Founder & CTO" },
-    { "@type": "Person", name: "Raunak Sadhwani", jobTitle: "Co-Founder & Senior AI Software Engineer" },
+    { "@type": "Person", name: "Raunak Sadhwani", jobTitle: "Co-Founder & President", description: "AI systems, secure integrations and business automation expertise with international experience in Germany." },
   ],
   sameAs: ["https://www.linkedin.com/company/111461921/"],
   contactPoint: { "@type": "ContactPoint", contactType: "customer service", email: "team@thecodelawyers.com", telephone: "+91-8454055228" },

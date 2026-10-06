@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 export const siteUrl = "https://thecodelawyers.com"
 export const siteName = "The Code Lawyers"
-export const siteDescription = "The Code Lawyers builds custom software, websites, AI chatbots, voice agents and workflow automation for businesses. Meet our team and explore our work."
+export const siteDescription = "The Code Lawyers builds custom software, websites, AI chatbots, voice agents and workflow automation for businesses in India. Explore our services and work."
 
 export function pageMetadata(title: string, description: string, path: string): Metadata {
   const url = `${siteUrl}${path}`
@@ -10,7 +10,7 @@ export function pageMetadata(title: string, description: string, path: string): 
   return {
     title, description,
     alternates: { canonical: url },
-    openGraph: { type: "website", locale: "en_US", siteName, title: fullTitle, description, url,
+    openGraph: { type: "website", locale: "en_IN", siteName, title: fullTitle, description, url,
       images: [{ url: `${siteUrl}/opengraph-image`, width: 1200, height: 630, alt: `${siteName} — Software engineering & AI automation` }] },
     twitter: { card: "summary_large_image", title: fullTitle, description, images: [`${siteUrl}/opengraph-image`] },
   }
