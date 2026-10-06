@@ -1,0 +1,6 @@
+{
+  "format": "LMP2",
+  "points": 243689,
+  "sourceSha256": "549a1c399f833c8ef9656575695f63e8b1038ff6388ff5136610ad755fbd394c",
+  "method": "Reference-coloured 3D relief point cloud. Facial depth and silhouette proportions fitted to the supplied front and three-quarter reference images. Intended for limited interactive head turns; not a recovered full 360-degree model."
+}

@@ -18,6 +18,7 @@ try {
   await ready(page);
   await noOverflow(page);
   await expect(page.locator('h1')).toHaveText('Introducing Lamp.');
+  await expect(page.locator('.lamp-sculpture')).toHaveAttribute('data-reconstruction', 'reference-depth-particles');
   await expect(page.locator('.lamp-sculpture')).toHaveAttribute('data-particle-tools', 'n8n,openai,claude,gemini,zapier,make,langchain,openclaw,hermes');
   await expect(page.locator('.lamp-sculpture canvas')).toHaveCount(1);
   await expect(page.locator('footer a[href="mailto:team@thecodelawyers.com"]').first()).toBeVisible();
@@ -86,7 +87,7 @@ try {
   observe(delayed);
   let release;
   const gate = new Promise(resolve => { release = resolve });
-  await delayed.route('**/lamp/models/head.glb', async route => { await gate; await route.continue(); });
+  await delayed.route('**/lamp/models/reference-portrait.bin', async route => { await gate; await route.continue(); });
   await delayed.goto(base, { waitUntil: 'domcontentloaded' });
   await expect(delayed.locator('.lamp-loader')).toBeVisible();
   await expect.poll(() => delayed.locator('header').evaluate(el => el.inert)).toBe(true);
@@ -108,7 +109,7 @@ try {
   const fallback = await browser.newPage();
   observe(fallback);
   let tries = 0;
-  await fallback.route('**/lamp/models/head.glb', route => { tries++; return route.fulfill({ status: 503, body: 'test unavailable' }); });
+  await fallback.route('**/lamp/models/reference-portrait.bin', route => { tries++; return route.fulfill({ status: 503, body: 'test unavailable' }); });
   await fallback.goto(base, { waitUntil: 'domcontentloaded' });
   await expect(fallback.locator('.lamp-runway')).toHaveAttribute('data-lamp-status', 'fallback', { timeout: 20000 });
   await expect(fallback.locator('.lamp-loader')).toBeHidden();
