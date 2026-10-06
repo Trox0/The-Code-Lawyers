@@ -52,7 +52,8 @@ const jsonLd = {
     { "@type": "Person", name: "Kshitij Sharma", jobTitle: "Co-Founder & CTO" },
     { "@type": "Person", name: "Raunak Sadhwani", jobTitle: "Co-Founder & President", description: "AI systems, secure integrations and business automation expertise with international experience in Germany." },
   ],
-  sameAs: ["https://www.linkedin.com/company/111461921/"],
+  sameAs: ["https://www.linkedin.com/company/111461921/", "https://www.instagram.com/thecodelawyers/"],
+  knowsAbout: ["Software engineering", "Custom software development", "Web development", "AI chatbots", "AI voice agents", "Workflow automation"],
   contactPoint: { "@type": "ContactPoint", contactType: "customer service", email: "team@thecodelawyers.com", telephone: "+91-8454055228" },
 }
 
