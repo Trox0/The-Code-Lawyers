@@ -95,7 +95,6 @@ export function Footer() {
             >
               Disclaimer
             </Link>
-            <a href="/lamp/credits.html" className="text-sm text-muted-foreground hover:text-foreground transition-colors">3D credits</a>
           </nav>
 
           {/* Social Icons */}
