@@ -1,3 +1,4 @@
+import { pageMetadata, breadcrumbs, siteUrl } from "@/lib/seo"
 import { projectsData } from "@/lib/projects-data"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react"
@@ -24,10 +25,7 @@ export async function generateMetadata({
     const project = projectsData.find((p) => p.slug === slug)
     if (!project) return { title: "Project Not Found" }
 
-    return {
-        title: `${project.problem.title} - ${project.title} | The Code Lawyers`,
-        description: project.tagline,
-    }
+    return pageMetadata(`${project.problem.title} — ${project.title}`, project.problem.summary, `/projects/${slug}/problem`)
 }
 
 export default async function ProblemPage({
@@ -51,6 +49,7 @@ export default async function ProblemPage({
 
     return (
         <main className="min-h-screen bg-background">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs([{ name: "The Code Lawyers", path: "/" }, { name: project.title, path: `/projects/${slug}` }, { name: project.problem.title, path: `/projects/${slug}/problem` }])) }} />
             <LazyBackgrounds />
             <AnimatedRocket />
             <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">

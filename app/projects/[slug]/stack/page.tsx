@@ -1,3 +1,4 @@
+import { pageMetadata, breadcrumbs, siteUrl } from "@/lib/seo"
 import { projectsData } from "@/lib/projects-data"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react"
@@ -24,10 +25,7 @@ export async function generateMetadata({
     const project = projectsData.find((p) => p.slug === slug)
     if (!project) return { title: "Project Not Found" }
 
-    return {
-        title: `${project.stack.title} - ${project.title} | The Code Lawyers`,
-        description: project.tagline,
-    }
+    return pageMetadata(`${project.stack.title} — ${project.title}`, project.stack.summary, `/projects/${slug}/stack`)
 }
 
 export default async function StackPage({
@@ -51,6 +49,7 @@ export default async function StackPage({
 
     return (
         <main className="min-h-screen bg-background">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs([{ name: "The Code Lawyers", path: "/" }, { name: project.title, path: `/projects/${slug}` }, { name: project.stack.title, path: `/projects/${slug}/stack` }])) }} />
             <LazyBackgrounds />
             <AnimatedRocket />
             <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">

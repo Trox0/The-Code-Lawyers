@@ -1,15 +1,9 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Terms of Service for The Code Lawyers - Read our terms and conditions for software engineering, AI solutions, and digital services.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+export const metadata: Metadata = pageMetadata("Terms of Service", "Terms of service for The Code Lawyers software engineering and AI services.", "/terms")
 
 export default function TermsOfService() {
   return (

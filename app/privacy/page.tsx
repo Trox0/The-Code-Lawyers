@@ -1,15 +1,9 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy for The Code Lawyers - Learn how we collect, use, and protect your personal information when you use our software engineering and AI solutions services.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+export const metadata: Metadata = pageMetadata("Privacy Policy", "How The Code Lawyers collects, uses and protects personal information.", "/privacy")
 
 export default function PrivacyPolicy() {
   return (

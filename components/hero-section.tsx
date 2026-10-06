@@ -216,7 +216,7 @@ export function HeroSection() {
           <div ref={sceneRef} className="lamp-sculpture" />
         </div>
         <div ref={copyRef} className="lamp-intro-content">
-          <p className="lamp-kicker">AI. Automation. Software that moves you forward.</p>
+          <p className="lamp-kicker">The Code Lawyers. AI. Automation. Software.</p>
           <div className="lamp-intro-row">
             <h1>Introducing <em>Lamp.</em></h1>
             <a className="lamp-white-button" href="#contact">Let’s build <ArrowUpRight size={22} /></a>

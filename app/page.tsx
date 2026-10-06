@@ -1,3 +1,5 @@
+import { siteUrl, siteName, siteDescription } from "@/lib/seo"
+import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
@@ -14,9 +16,14 @@ const ContactSection = dynamic(() => import("@/components/contact-section").then
 const Footer = dynamic(() => import("@/components/footer").then(mod => mod.Footer))
 
 
+export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: { url: "/" } }
+
+const websiteSchema = { "@context": "https://schema.org", "@type": "WebSite", "@id": `${siteUrl}/#website`, url: `${siteUrl}/`, name: siteName, alternateName: "TheCodeLawyers", description: siteDescription, publisher: { "@id": `${siteUrl}/#organization` }, inLanguage: "en" }
+
 export default function Home() {
   return (
     <main className="lamp-site min-h-screen bg-background relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <Header />
       <HeroSection />
       <LampApproach />

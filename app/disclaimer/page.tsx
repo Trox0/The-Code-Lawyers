@@ -1,15 +1,9 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Disclaimer",
-  description: "Legal Disclaimer for The Code Lawyers - Important information about our software engineering and AI solutions services, limitations, and warranties.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+export const metadata: Metadata = pageMetadata("Disclaimer", "Website and service disclaimer for The Code Lawyers.", "/disclaimer")
 
 export default function Disclaimer() {
   return (

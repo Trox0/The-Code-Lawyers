@@ -1,3 +1,4 @@
+import { pageMetadata, breadcrumbs, siteUrl } from "@/lib/seo"
 import { servicesData } from "@/lib/services-data"
 import Link from "next/link"
 import { ArrowRight, CheckCircle } from "lucide-react"
@@ -25,15 +26,7 @@ export async function generateMetadata({
     const service = servicesData.find((s) => s.slug === slug)
     if (!service) return { title: "Service Not Found" }
 
-    return {
-        title: `${service.title} | The Code Lawyers`,
-        description: service.description,
-        openGraph: {
-            title: `${service.title} | The Code Lawyers`,
-            description: service.description,
-            type: "website",
-        },
-    }
+    return pageMetadata(service.title, service.description, `/services/${slug}`)
 }
 
 export default async function ServicePage({
@@ -52,6 +45,8 @@ export default async function ServicePage({
 
     return (
         <main className="min-h-screen bg-background">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs([{ name: "The Code Lawyers", path: "/" }, { name: service.title, path: `/services/${slug}` }])) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", name: service.title, description: service.description, url: `${siteUrl}/services/${slug}`, provider: { "@id": `${siteUrl}/#organization` } }) }} />
             <LazyBackgrounds />
             <AnimatedRocket />
             <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
