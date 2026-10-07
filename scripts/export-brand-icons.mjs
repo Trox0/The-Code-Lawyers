@@ -4,8 +4,9 @@ await mkdir('public/brand',{recursive:true});
 const svg=await readFile('app/icon.svg');
 await writeFile('public/icon.svg',svg);
 await writeFile('public/placeholder-logo.svg',svg);
+// The signature PNG is an independently edited header logo; preserve it here.
 const exports=[
- ['public/brand/favicon-1024.png',1024],['public/brand/apple-touch-180.png',180],
+ ['public/brand/apple-touch-180.png',180],
  ['public/apple-icon.png',180],['public/icon-dark-32x32.png',32],
  ['public/icon-light-32x32.png',32],['public/placeholder-logo.png',180]
 ];
