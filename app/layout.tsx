@@ -1,4 +1,5 @@
 import { siteUrl, siteName, siteDescription } from "@/lib/seo"
+import { raunakPerson } from "@/lib/raunak-profile"
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   publisher: siteName,
   applicationName: siteName,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-  icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
+  icons: { icon: "/icon.svg", apple: "/brand/apple-touch-180.png" },
   manifest: "/manifest.json",
   openGraph: { type: "website", locale: "en_IN", siteName, title: `${siteName} | Software Engineering & AI Automation`, description: siteDescription,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "The Code Lawyers — Software engineering & AI automation" }] },
@@ -50,7 +51,7 @@ const jsonLd = {
   founder: [
     { "@type": "Person", name: "Yashwant Pandey", jobTitle: "Co-Founder & CEO" },
     { "@type": "Person", name: "Kshitij Sharma", jobTitle: "Co-Founder & CTO" },
-    { "@type": "Person", name: "Raunak Sadhwani", jobTitle: "Co-Founder & President", description: "AI systems, secure integrations and business automation expertise with international experience in Germany." },
+    raunakPerson,
   ],
   sameAs: ["https://www.linkedin.com/company/111461921/", "https://www.instagram.com/thecodelawyers/"],
   knowsAbout: ["Software engineering", "Custom software development", "Web development", "AI chatbots", "AI voice agents", "Workflow automation"],

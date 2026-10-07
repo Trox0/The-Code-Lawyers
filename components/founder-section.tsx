@@ -62,6 +62,7 @@ export function FounderSection() {
 
   const FounderCard = ({ founder, index, isVertical = false }: { founder: typeof founders[0], index: number, isVertical?: boolean }) => (
     <div
+      id={founder.name === "Raunak Sadhwani" ? "raunak-sadhwani" : undefined}
       className={`group relative h-full cursor-pointer rounded-3xl p-6 md:p-10 transition-all duration-700 hover:-translate-y-1 hover:shadow-2xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
@@ -72,6 +73,10 @@ export function FounderSection() {
         transitionDelay: `${index * 200}ms`
       }}
     >
+      {founder.name === "Raunak Sadhwani" && (
+        <a href="https://raunak.me/" aria-label="Raunak Sadhwani — Co-Founder & President, visit personal website"
+          className="absolute inset-0 z-20 rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400" />
+      )}
       <div
         className="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"
         style={{
@@ -131,6 +136,7 @@ export function FounderSection() {
           <p className="text-foreground leading-relaxed text-sm md:text-base text-balance">
             {founder.bio}
           </p>
+          {founder.name === "Raunak Sadhwani" && <p className="mt-4 text-sm text-purple-400">Visit raunak.me ↗</p>}
           <div className="flex items-center gap-2 mt-4 justify-center md:justify-start">
             <div className="w-8 h-px bg-gradient-to-r from-purple-500/50 to-transparent" />
             <div className="w-2 h-2 rounded-full bg-purple-500/50" />
