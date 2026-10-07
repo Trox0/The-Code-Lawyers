@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   publisher: siteName,
   applicationName: siteName,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-  icons: { icon: "/icon.svg", apple: "/brand/apple-touch-180.png" },
+  icons: { icon: "/icon.png", apple: "/brand/apple-touch-180.png" },
   manifest: "/manifest.json",
   openGraph: { type: "website", locale: "en_IN", siteName, title: `${siteName} | Software Engineering & AI Automation`, description: siteDescription,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "The Code Lawyers — Software engineering & AI automation" }] },
