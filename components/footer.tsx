@@ -110,7 +110,6 @@ export function Footer() {
             custom software development, AI chatbots, AI voice bots, web applications, mobile apps,
             and business automation. We deliver reliable software engineering and practical AI solutions for growing businesses.
           </p>
-          <Link href="/team/raunak-sadhwani" className="inline-block mt-3 text-xs text-muted-foreground hover:text-purple-400">Raunak Sadhwani · Co-Founder &amp; President</Link>
         </div>
       </div>
     </footer>

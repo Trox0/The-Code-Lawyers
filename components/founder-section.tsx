@@ -136,7 +136,6 @@ export function FounderSection() {
           <p className="text-foreground leading-relaxed text-sm md:text-base text-balance">
             {founder.bio}
           </p>
-          {founder.name === "Raunak Sadhwani" && <p className="mt-4 text-sm text-purple-400">Visit raunak.me ↗</p>}
           <div className="flex items-center gap-2 mt-4 justify-center md:justify-start">
             <div className="w-8 h-px bg-gradient-to-r from-purple-500/50 to-transparent" />
             <div className="w-2 h-2 rounded-full bg-purple-500/50" />
