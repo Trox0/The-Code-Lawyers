@@ -24,6 +24,17 @@ try {
   await expect(page.locator('footer a[href="mailto:team@thecodelawyers.com"]').first()).toBeVisible();
   await page.mouse.move(720, 360);
   await page.screenshot({ path: 'test-results/lamp-desktop.png' });
+  for (const [name, x, y, yawDirection, verticalDirection] of [
+    ['left', 10, 430, -1, 0], ['right', 1430, 430, 1, 0],
+    ['upper-left', 10, 10, -1, 1], ['upper-right', 1430, 10, 1, 1],
+    ['lower-left', 10, 890, -1, -1], ['lower-right', 1430, 890, 1, -1],
+  ]) {
+    await page.mouse.move(x, y);
+    await expect.poll(async () => Number(await page.locator('.lamp-sculpture').getAttribute('data-look-yaw')) * yawDirection, { timeout: 15000 }).toBeGreaterThan(.45);
+    if (verticalDirection) await expect.poll(async () => Number(await page.locator('.lamp-sculpture').getAttribute('data-look-pitch')) * -verticalDirection, { timeout: 15000 }).toBeGreaterThan(.22);
+    await page.screenshot({ path: `test-results/lamp-${name}.png` });
+  }
+  await page.mouse.move(720, 430);
   await page.evaluate(() => scrollTo({ top: innerHeight * .88, behavior: 'instant' }));
   await expect.poll(() => page.locator('.lamp-sculpture').getAttribute('data-camera-zoom')).toMatch(/^1\.[678]/);
   expect(Number(await page.locator('.lamp-sculpture').getAttribute('data-exposure'))).toBeGreaterThan(2);

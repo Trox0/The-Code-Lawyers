@@ -8,12 +8,12 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Phone, ArrowRight, Mail, Send, Loader2, CheckCircle, XCircle } from "lucide-react"
-import { toast } from "sonner"
 
-// EmailJS configuration - Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = "service_7mtevzo"
-const EMAILJS_TEMPLATE_ID = "template_buyrg5o"
-const EMAILJS_PUBLIC_KEY = "sSf039MhYq_hCloBC"
+// Public identifiers only; deployments can override the existing EmailJS account.
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_7mtevzo"
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_buyrg5o"
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "sSf039MhYq_hCloBC"
+const ENQUIRY_RECIPIENT = "team@thecodelawyers.com"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -25,6 +25,8 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const sectionRef = useRef<HTMLDivElement>(null)
+  const submittingRef = useRef(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,48 +47,55 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (submittingRef.current) return
+    const name = formData.name.trim(), email = formData.email.trim(), message = formData.message.trim()
+    if (!name || !email || !message) {
+      setErrorMessage("Please enter your name, email, and a message.")
+      setSubmitStatus("error")
+      return
+    }
+    submittingRef.current = true
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
     try {
-      // Dynamic import of emailjs-com for client-side only
       const emailjs = (await import("@emailjs/browser")).default
-
-      // Initialize EmailJS
-      emailjs.init(EMAILJS_PUBLIC_KEY)
 
       // Send email using EmailJS
       const result = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
+          from_name: name,
+          from_email: email,
+          // Support both the existing template and EmailJS's standard fields.
+          name,
+          email,
+          reply_to: email,
+          message,
           to_name: "The Code Lawyers",
-        }
+          to_email: ENQUIRY_RECIPIENT,
+          subject: `Website enquiry from ${name}`,
+          title: `Website enquiry from ${name}`,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
       )
 
       if (result.status === 200) {
         setSubmitStatus("success")
-        toast.success("Message sent successfully!", {
-          description: "We'll get back to you as soon as possible.",
-          icon: <CheckCircle className="h-5 w-5 text-green-500" />,
-        })
         // Reset form
         setFormData({ name: "", email: "", message: "" })
-      }
+      } else throw new Error("Unexpected email response")
     } catch (error) {
       console.error("EmailJS Error:", error)
       setSubmitStatus("error")
-      toast.error("Failed to send message", {
-        description: "Please try again or contact us directly via phone.",
-        icon: <XCircle className="h-5 w-5 text-red-500" />,
-      })
+      const status = typeof error === "object" && error !== null && "status" in error ? error.status : undefined
+      setErrorMessage(status === 429
+        ? "We couldn’t send your message right now. Please wait a minute and try again, or email us directly."
+        : "We couldn’t send your message. Your draft is saved here. Please try again or email us directly.")
     } finally {
+      submittingRef.current = false
       setIsSubmitting(false)
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus("idle"), 3000)
     }
   }
 
@@ -193,6 +202,9 @@ export function ContactSection() {
                   <Label htmlFor="name" className="text-foreground/90">Name</Label>
                   <Input
                     id="name"
+                    name="name"
+                    autoComplete="name"
+                    maxLength={120}
                     placeholder="Your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -206,6 +218,9 @@ export function ContactSection() {
                   <Label htmlFor="email" className="text-foreground/90">Email</Label>
                   <Input
                     id="email"
+                    name="email"
+                    autoComplete="email"
+                    maxLength={254}
                     type="email"
                     placeholder="your@email.com"
                     value={formData.email}
@@ -220,6 +235,8 @@ export function ContactSection() {
                   <Label htmlFor="message" className="text-foreground/90">Message</Label>
                   <Textarea
                     id="message"
+                    name="message"
+                    maxLength={5000}
                     placeholder="Tell us about your project..."
                     rows={5}
                     value={formData.message}
@@ -262,6 +279,20 @@ export function ContactSection() {
                     </>
                   )}
                 </Button>
+
+                {submitStatus === "success" && (
+                  <p role="status" className="text-sm text-green-400">
+                    Message sent. We’ll get back to you as soon as possible.
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <div role="alert" className="text-sm text-red-300 space-y-2">
+                    <p>{errorMessage}</p>
+                    <a className="underline underline-offset-4" href={`mailto:team@thecodelawyers.com?subject=${encodeURIComponent(`Project inquiry from ${formData.name.trim()}`)}&body=${encodeURIComponent(`${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`)}`}>
+                      Email team@thecodelawyers.com
+                    </a>
+                  </div>
+                )}
 
                 {/* Decorative corner elements */}
                 <div className="absolute top-0 right-0 w-20 h-20 opacity-20 pointer-events-none">
