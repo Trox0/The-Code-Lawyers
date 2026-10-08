@@ -7,6 +7,9 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
+    "test": "node scripts/verify-portrait.mjs && node scripts/verify-portrait-rig.mjs && node scripts/verify-contact.mjs && node scripts/verify-lamp.mjs",
+    "test:portrait": "node scripts/verify-portrait.mjs && node scripts/verify-portrait-rig.mjs",
+    "test:contact": "node scripts/verify-contact.mjs",
     "test:lamp": "node scripts/verify-lamp.mjs"
   },
   "browserslist": {
