@@ -46,12 +46,12 @@ export function FounderSection() {
       )
     },
     {
-      name: "Raunak Sadhwani",
+      name: "Kartik",
       role: "Co-Founder & President",
-      image: "/images/raunak-sadhwani.jpg",
+      image: "/images/kartik.png",
       bio: (
         <>
-          Over 2 years of <span className="text-purple-400 font-medium">international experience in Germany</span> combined with 3 years of <span className="text-purple-400 font-medium">development expertise</span>, specialising in <span className="text-purple-400 font-medium">AI systems, secure integrations and business automation</span>.
+          Over 2 years of <span className="text-purple-400 font-medium">international experience in Europe</span> combined with 3 years of <span className="text-purple-400 font-medium">development expertise</span>, specialising in <span className="text-purple-400 font-medium">AI systems, secure integrations and business automation</span>.
         </>
       )
     }
@@ -62,7 +62,7 @@ export function FounderSection() {
 
   const FounderCard = ({ founder, index, isVertical = false }: { founder: typeof founders[0], index: number, isVertical?: boolean }) => (
     <div
-      id={founder.name === "Raunak Sadhwani" ? "raunak-sadhwani" : undefined}
+      id={founder.name === "Kartik" ? "kartik" : undefined}
       className={`group relative h-full cursor-pointer rounded-3xl p-6 md:p-10 transition-all duration-700 hover:-translate-y-1 hover:shadow-2xl ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
@@ -73,10 +73,6 @@ export function FounderSection() {
         transitionDelay: `${index * 200}ms`
       }}
     >
-      {founder.name === "Raunak Sadhwani" && (
-        <a href="https://raunak.me/" aria-label="Raunak Sadhwani — Co-Founder & President, visit personal website"
-          className="absolute inset-0 z-20 rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400" />
-      )}
       <div
         className="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"
         style={{
@@ -114,10 +110,11 @@ export function FounderSection() {
                 src={founder.image}
                 alt={`${founder.name} - ${founder.role}`}
                 fill
-                sizes="160px"
+                sizes={founder.name === "Kartik" ? "480px" : "160px"}
                 quality={75}
-                unoptimized={true}
+                unoptimized={founder.name !== "Kartik"}
                 className="object-cover object-top transition-transform duration-700 group-hover/image:scale-110"
+                style={founder.name === "Kartik" ? { transform: "translate(-15%, -60%) scale(3)" } : undefined}
               />
             ) : (
               <div className="w-full h-full bg-purple-900/20 flex items-center justify-center">

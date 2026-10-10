@@ -1,5 +1,5 @@
 import { siteUrl, siteName, siteDescription } from "@/lib/seo"
-import { raunakPerson } from "@/lib/raunak-profile"
+import { kartikPerson } from "@/lib/kartik-profile"
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
@@ -51,7 +51,7 @@ const jsonLd = {
   founder: [
     { "@type": "Person", name: "Yashwant Pandey", jobTitle: "Co-Founder & CEO" },
     { "@type": "Person", name: "Kshitij Sharma", jobTitle: "Co-Founder & CTO" },
-    raunakPerson,
+    kartikPerson,
   ],
   sameAs: ["https://www.linkedin.com/company/111461921/", "https://www.instagram.com/thecodelawyers/"],
   knowsAbout: ["Software engineering", "Custom software development", "Web development", "AI chatbots", "AI voice agents", "Workflow automation"],
